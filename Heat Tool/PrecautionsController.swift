@@ -18,7 +18,7 @@ class PrecautionsController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let localfilePath = NSBundle.mainBundle().URLForResource(precautionLevel, withExtension: "htm")
+        let localfilePath = NSBundle.mainBundle().URLForResource(precautionLevel, withExtension: "html")
         let myRequest = NSURLRequest(URL: localfilePath!)
         webView.loadRequest(myRequest)
     }

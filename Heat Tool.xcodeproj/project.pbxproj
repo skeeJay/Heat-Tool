@@ -8,12 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		831FF0D21AA284FA00A88F49 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831FF0D11AA284FA00A88F49 /* WebViewController.swift */; };
-		8349902A1A9904FE00669A1A /* About This App.htm in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF01A9904FE00669A1A /* About This App.htm */; };
-		8349902B1A9904FE00669A1A /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF11A9904FE00669A1A /* app.js */; };
-		8349902C1A9904FE00669A1A /* Contact OSHA.htm in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF21A9904FE00669A1A /* Contact OSHA.htm */; };
 		8349902D1A9904FE00669A1A /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF31A9904FE00669A1A /* contact.png */; };
 		8349902E1A9904FE00669A1A /* First Aid.htm in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF41A9904FE00669A1A /* First Aid.htm */; };
-		8349902F1A9904FE00669A1A /* HeatAppWeb.tmproj in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF51A9904FE00669A1A /* HeatAppWeb.tmproj */; };
 		834990301A9904FE00669A1A /* bigBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF71A9904FE00669A1A /* bigBlue.png */; };
 		834990311A9904FE00669A1A /* heatcramps.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF81A9904FE00669A1A /* heatcramps.png */; };
 		834990321A9904FE00669A1A /* heatexhaustion.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF91A9904FE00669A1A /* heatexhaustion.png */; };
@@ -28,41 +24,19 @@
 		8349903B1A9904FE00669A1A /* img7.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990021A9904FE00669A1A /* img7.png */; };
 		8349903C1A9904FE00669A1A /* img8.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990031A9904FE00669A1A /* img8.png */; };
 		8349903D1A9904FE00669A1A /* img9.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990041A9904FE00669A1A /* img9.png */; };
-		8349903E1A9904FE00669A1A /* More Detail.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990051A9904FE00669A1A /* More Detail.htm */; };
-		8349903F1A9904FE00669A1A /* precautions_high.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990061A9904FE00669A1A /* precautions_high.htm */; };
-		834990401A9904FE00669A1A /* precautions_lower.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990071A9904FE00669A1A /* precautions_lower.htm */; };
-		834990411A9904FE00669A1A /* precautions_moderate.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990081A9904FE00669A1A /* precautions_moderate.htm */; };
-		834990421A9904FE00669A1A /* precautions_veryhigh.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990091A9904FE00669A1A /* precautions_veryhigh.htm */; };
 		834990431A9904FE00669A1A /* Signs and Symptoms.htm in Resources */ = {isa = PBXBuildFile; fileRef = 8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */; };
 		834990441A9904FE00669A1A /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 8349900B1A9904FE00669A1A /* styles.css */; };
-		834990451A9904FE00669A1A /* About This App.htm in Resources */ = {isa = PBXBuildFile; fileRef = 8349900D1A9904FE00669A1A /* About This App.htm */; };
-		834990461A9904FE00669A1A /* app.js in Resources */ = {isa = PBXBuildFile; fileRef = 8349900E1A9904FE00669A1A /* app.js */; };
-		834990471A9904FE00669A1A /* Contact OSHA.htm in Resources */ = {isa = PBXBuildFile; fileRef = 8349900F1A9904FE00669A1A /* Contact OSHA.htm */; };
-		834990481A9904FE00669A1A /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990101A9904FE00669A1A /* contact.png */; };
 		834990491A9904FE00669A1A /* First Aid.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990111A9904FE00669A1A /* First Aid.htm */; };
-		8349904A1A9904FE00669A1A /* HeatAppWeb.tmproj in Resources */ = {isa = PBXBuildFile; fileRef = 834990121A9904FE00669A1A /* HeatAppWeb.tmproj */; };
-		8349904B1A9904FE00669A1A /* bigBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990141A9904FE00669A1A /* bigBlue.png */; };
-		8349904C1A9904FE00669A1A /* heatcramps.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990151A9904FE00669A1A /* heatcramps.png */; };
-		8349904D1A9904FE00669A1A /* heatexhaustion.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990161A9904FE00669A1A /* heatexhaustion.png */; };
-		8349904E1A9904FE00669A1A /* heatfatigue.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990171A9904FE00669A1A /* heatfatigue.png */; };
-		8349904F1A9904FE00669A1A /* heatstroke.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990181A9904FE00669A1A /* heatstroke.png */; };
-		834990501A9904FE00669A1A /* img1.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990191A9904FE00669A1A /* img1.png */; };
-		834990511A9904FE00669A1A /* img2.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901A1A9904FE00669A1A /* img2.png */; };
-		834990521A9904FE00669A1A /* img3.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901B1A9904FE00669A1A /* img3.png */; };
-		834990531A9904FE00669A1A /* img4.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901C1A9904FE00669A1A /* img4.png */; };
-		834990541A9904FE00669A1A /* img5.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901D1A9904FE00669A1A /* img5.png */; };
-		834990551A9904FE00669A1A /* img6.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901E1A9904FE00669A1A /* img6.png */; };
-		834990561A9904FE00669A1A /* img7.png in Resources */ = {isa = PBXBuildFile; fileRef = 8349901F1A9904FE00669A1A /* img7.png */; };
-		834990571A9904FE00669A1A /* img8.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990201A9904FE00669A1A /* img8.png */; };
-		834990581A9904FE00669A1A /* img9.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990211A9904FE00669A1A /* img9.png */; };
-		834990591A9904FE00669A1A /* More Detail.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990221A9904FE00669A1A /* More Detail.htm */; };
 		8349905A1A9904FE00669A1A /* more_info.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990231A9904FE00669A1A /* more_info.htm */; };
-		8349905B1A9904FE00669A1A /* precautions_high.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990241A9904FE00669A1A /* precautions_high.htm */; };
-		8349905C1A9904FE00669A1A /* precautions_lower.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990251A9904FE00669A1A /* precautions_lower.htm */; };
-		8349905D1A9904FE00669A1A /* precautions_moderate.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990261A9904FE00669A1A /* precautions_moderate.htm */; };
-		8349905E1A9904FE00669A1A /* precautions_veryhigh.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990271A9904FE00669A1A /* precautions_veryhigh.htm */; };
 		8349905F1A9904FE00669A1A /* Signs and Symptoms.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990281A9904FE00669A1A /* Signs and Symptoms.htm */; };
 		834990601A9904FE00669A1A /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 834990291A9904FE00669A1A /* styles.css */; };
+		835882A71AA37CF7005A3761 /* About This App.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882A91AA37CF7005A3761 /* About This App.html */; };
+		835882B01AA380AC005A3761 /* Contact OSHA.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B21AA380AC005A3761 /* Contact OSHA.html */; };
+		835882B51AA381E8005A3761 /* More Detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B71AA381E8005A3761 /* More Detail.html */; };
+		835882B91AA383AF005A3761 /* precautions_lower.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882BB1AA383AF005A3761 /* precautions_lower.html */; };
+		835882BD1AA384BE005A3761 /* precautions_moderate.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882BF1AA384BE005A3761 /* precautions_moderate.html */; };
+		835882C11AA38535005A3761 /* precautions_high.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882C31AA38535005A3761 /* precautions_high.html */; };
+		835882C51AA385AD005A3761 /* precautions_veryhigh.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882C71AA385AD005A3761 /* precautions_veryhigh.html */; };
 		835E0C151A72F14400F47229 /* MoreInfoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 835E0C141A72F14400F47229 /* MoreInfoController.swift */; };
 		8386109E1A93E37D000A1904 /* PrecautionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386109D1A93E37D000A1904 /* PrecautionsController.swift */; };
 		838610A51A941350000A1904 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831D9A951A8EB30800B4EB56 /* CoreLocation.framework */; };
@@ -99,12 +73,8 @@
 /* Begin PBXFileReference section */
 		831D9A951A8EB30800B4EB56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		831FF0D11AA284FA00A88F49 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		83498FF01A9904FE00669A1A /* About This App.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "About This App.htm"; sourceTree = "<group>"; };
-		83498FF11A9904FE00669A1A /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
-		83498FF21A9904FE00669A1A /* Contact OSHA.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Contact OSHA.htm"; sourceTree = "<group>"; };
 		83498FF31A9904FE00669A1A /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		83498FF41A9904FE00669A1A /* First Aid.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "First Aid.htm"; sourceTree = "<group>"; };
-		83498FF51A9904FE00669A1A /* HeatAppWeb.tmproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HeatAppWeb.tmproj; sourceTree = "<group>"; };
 		83498FF71A9904FE00669A1A /* bigBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigBlue.png; sourceTree = "<group>"; };
 		83498FF81A9904FE00669A1A /* heatcramps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatcramps.png; sourceTree = "<group>"; };
 		83498FF91A9904FE00669A1A /* heatexhaustion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatexhaustion.png; sourceTree = "<group>"; };
@@ -119,41 +89,27 @@
 		834990021A9904FE00669A1A /* img7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img7.png; sourceTree = "<group>"; };
 		834990031A9904FE00669A1A /* img8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img8.png; sourceTree = "<group>"; };
 		834990041A9904FE00669A1A /* img9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img9.png; sourceTree = "<group>"; };
-		834990051A9904FE00669A1A /* More Detail.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "More Detail.htm"; sourceTree = "<group>"; };
-		834990061A9904FE00669A1A /* precautions_high.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_high.htm; sourceTree = "<group>"; };
-		834990071A9904FE00669A1A /* precautions_lower.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_lower.htm; sourceTree = "<group>"; };
-		834990081A9904FE00669A1A /* precautions_moderate.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_moderate.htm; sourceTree = "<group>"; };
-		834990091A9904FE00669A1A /* precautions_veryhigh.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_veryhigh.htm; sourceTree = "<group>"; };
 		8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Signs and Symptoms.htm"; sourceTree = "<group>"; };
 		8349900B1A9904FE00669A1A /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
-		8349900D1A9904FE00669A1A /* About This App.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "About This App.htm"; sourceTree = "<group>"; };
-		8349900E1A9904FE00669A1A /* app.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = app.js; sourceTree = "<group>"; };
-		8349900F1A9904FE00669A1A /* Contact OSHA.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Contact OSHA.htm"; sourceTree = "<group>"; };
-		834990101A9904FE00669A1A /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
 		834990111A9904FE00669A1A /* First Aid.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "First Aid.htm"; sourceTree = "<group>"; };
-		834990121A9904FE00669A1A /* HeatAppWeb.tmproj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = HeatAppWeb.tmproj; sourceTree = "<group>"; };
-		834990141A9904FE00669A1A /* bigBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigBlue.png; sourceTree = "<group>"; };
-		834990151A9904FE00669A1A /* heatcramps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatcramps.png; sourceTree = "<group>"; };
-		834990161A9904FE00669A1A /* heatexhaustion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatexhaustion.png; sourceTree = "<group>"; };
-		834990171A9904FE00669A1A /* heatfatigue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatfatigue.png; sourceTree = "<group>"; };
-		834990181A9904FE00669A1A /* heatstroke.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatstroke.png; sourceTree = "<group>"; };
-		834990191A9904FE00669A1A /* img1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img1.png; sourceTree = "<group>"; };
-		8349901A1A9904FE00669A1A /* img2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img2.png; sourceTree = "<group>"; };
-		8349901B1A9904FE00669A1A /* img3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img3.png; sourceTree = "<group>"; };
-		8349901C1A9904FE00669A1A /* img4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img4.png; sourceTree = "<group>"; };
-		8349901D1A9904FE00669A1A /* img5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img5.png; sourceTree = "<group>"; };
-		8349901E1A9904FE00669A1A /* img6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img6.png; sourceTree = "<group>"; };
-		8349901F1A9904FE00669A1A /* img7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img7.png; sourceTree = "<group>"; };
-		834990201A9904FE00669A1A /* img8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img8.png; sourceTree = "<group>"; };
-		834990211A9904FE00669A1A /* img9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img9.png; sourceTree = "<group>"; };
-		834990221A9904FE00669A1A /* More Detail.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "More Detail.htm"; sourceTree = "<group>"; };
 		834990231A9904FE00669A1A /* more_info.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = more_info.htm; sourceTree = "<group>"; };
-		834990241A9904FE00669A1A /* precautions_high.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_high.htm; sourceTree = "<group>"; };
-		834990251A9904FE00669A1A /* precautions_lower.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_lower.htm; sourceTree = "<group>"; };
-		834990261A9904FE00669A1A /* precautions_moderate.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_moderate.htm; sourceTree = "<group>"; };
-		834990271A9904FE00669A1A /* precautions_veryhigh.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = precautions_veryhigh.htm; sourceTree = "<group>"; };
 		834990281A9904FE00669A1A /* Signs and Symptoms.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Signs and Symptoms.htm"; sourceTree = "<group>"; };
 		834990291A9904FE00669A1A /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
+		835882A61AA37CE9005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		835882A81AA37CF7005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/About This App.html"; sourceTree = "<group>"; };
+		835882AE1AA37DFA005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/About This App.html"; sourceTree = "<group>"; };
+		835882B31AA380AF005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Contact OSHA.html"; sourceTree = "<group>"; };
+		835882B41AA380D4005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/Contact OSHA.html"; sourceTree = "<group>"; };
+		835882B61AA381E8005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/More Detail.html"; sourceTree = "<group>"; };
+		835882B81AA381ED005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/More Detail.html"; sourceTree = "<group>"; };
+		835882BA1AA383AF005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_lower.html; sourceTree = "<group>"; };
+		835882BC1AA383B2005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = es.lproj/precautions_lower.html; sourceTree = "<group>"; };
+		835882BE1AA384BE005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_moderate.html; sourceTree = "<group>"; };
+		835882C01AA384BF005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = es.lproj/precautions_moderate.html; sourceTree = "<group>"; };
+		835882C21AA38535005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_high.html; sourceTree = "<group>"; };
+		835882C41AA38553005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = es.lproj/precautions_high.html; sourceTree = "<group>"; };
+		835882C61AA385AD005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_veryhigh.html; sourceTree = "<group>"; };
+		835882C81AA385AF005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = es.lproj/precautions_veryhigh.html; sourceTree = "<group>"; };
 		835E0C141A72F14400F47229 /* MoreInfoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInfoController.swift; sourceTree = "<group>"; };
 		8386109D1A93E37D000A1904 /* PrecautionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecautionsController.swift; sourceTree = "<group>"; };
 		838610A31A9411B0000A1904 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
@@ -203,18 +159,16 @@
 		83498FEF1A9904FE00669A1A /* heatappweb_en */ = {
 			isa = PBXGroup;
 			children = (
-				83498FF01A9904FE00669A1A /* About This App.htm */,
-				83498FF11A9904FE00669A1A /* app.js */,
-				83498FF21A9904FE00669A1A /* Contact OSHA.htm */,
+				835882A91AA37CF7005A3761 /* About This App.html */,
+				835882B21AA380AC005A3761 /* Contact OSHA.html */,
 				83498FF31A9904FE00669A1A /* contact.png */,
 				83498FF41A9904FE00669A1A /* First Aid.htm */,
-				83498FF51A9904FE00669A1A /* HeatAppWeb.tmproj */,
 				83498FF61A9904FE00669A1A /* images */,
-				834990051A9904FE00669A1A /* More Detail.htm */,
-				834990061A9904FE00669A1A /* precautions_high.htm */,
-				834990071A9904FE00669A1A /* precautions_lower.htm */,
-				834990081A9904FE00669A1A /* precautions_moderate.htm */,
-				834990091A9904FE00669A1A /* precautions_veryhigh.htm */,
+				835882B71AA381E8005A3761 /* More Detail.html */,
+				835882C31AA38535005A3761 /* precautions_high.html */,
+				835882BB1AA383AF005A3761 /* precautions_lower.html */,
+				835882BF1AA384BE005A3761 /* precautions_moderate.html */,
+				835882C71AA385AD005A3761 /* precautions_veryhigh.html */,
 				8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */,
 				8349900B1A9904FE00669A1A /* styles.css */,
 			);
@@ -245,44 +199,12 @@
 		8349900C1A9904FE00669A1A /* heatappweb_es */ = {
 			isa = PBXGroup;
 			children = (
-				8349900D1A9904FE00669A1A /* About This App.htm */,
-				8349900E1A9904FE00669A1A /* app.js */,
-				8349900F1A9904FE00669A1A /* Contact OSHA.htm */,
-				834990101A9904FE00669A1A /* contact.png */,
 				834990111A9904FE00669A1A /* First Aid.htm */,
-				834990121A9904FE00669A1A /* HeatAppWeb.tmproj */,
-				834990131A9904FE00669A1A /* images */,
-				834990221A9904FE00669A1A /* More Detail.htm */,
 				834990231A9904FE00669A1A /* more_info.htm */,
-				834990241A9904FE00669A1A /* precautions_high.htm */,
-				834990251A9904FE00669A1A /* precautions_lower.htm */,
-				834990261A9904FE00669A1A /* precautions_moderate.htm */,
-				834990271A9904FE00669A1A /* precautions_veryhigh.htm */,
 				834990281A9904FE00669A1A /* Signs and Symptoms.htm */,
 				834990291A9904FE00669A1A /* styles.css */,
 			);
 			path = heatappweb_es;
-			sourceTree = "<group>";
-		};
-		834990131A9904FE00669A1A /* images */ = {
-			isa = PBXGroup;
-			children = (
-				834990141A9904FE00669A1A /* bigBlue.png */,
-				834990151A9904FE00669A1A /* heatcramps.png */,
-				834990161A9904FE00669A1A /* heatexhaustion.png */,
-				834990171A9904FE00669A1A /* heatfatigue.png */,
-				834990181A9904FE00669A1A /* heatstroke.png */,
-				834990191A9904FE00669A1A /* img1.png */,
-				8349901A1A9904FE00669A1A /* img2.png */,
-				8349901B1A9904FE00669A1A /* img3.png */,
-				8349901C1A9904FE00669A1A /* img4.png */,
-				8349901D1A9904FE00669A1A /* img5.png */,
-				8349901E1A9904FE00669A1A /* img6.png */,
-				8349901F1A9904FE00669A1A /* img7.png */,
-				834990201A9904FE00669A1A /* img8.png */,
-				834990211A9904FE00669A1A /* img9.png */,
-			);
-			path = images;
 			sourceTree = "<group>";
 		};
 		83FDDFCB1A66C9470018A068 = {
@@ -423,6 +345,7 @@
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 83FDDFCB1A66C9470018A068;
 			productRefGroup = 83FDDFD51A66C9470018A068 /* Products */;
@@ -441,67 +364,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				83E111411A72FFA6007DE234 /* moreinfo_signs@2x.png in Resources */,
-				8349905E1A9904FE00669A1A /* precautions_veryhigh.htm in Resources */,
-				834990401A9904FE00669A1A /* precautions_lower.htm in Resources */,
-				834990461A9904FE00669A1A /* app.js in Resources */,
+				835882B91AA383AF005A3761 /* precautions_lower.html in Resources */,
 				8349902D1A9904FE00669A1A /* contact.png in Resources */,
 				834990301A9904FE00669A1A /* bigBlue.png in Resources */,
-				8349904B1A9904FE00669A1A /* bigBlue.png in Resources */,
 				834990351A9904FE00669A1A /* img1.png in Resources */,
-				8349905C1A9904FE00669A1A /* precautions_lower.htm in Resources */,
-				8349904E1A9904FE00669A1A /* heatfatigue.png in Resources */,
 				83FDDFFA1A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png in Resources */,
-				834990541A9904FE00669A1A /* img5.png in Resources */,
 				834990331A9904FE00669A1A /* heatfatigue.png in Resources */,
-				834990581A9904FE00669A1A /* img9.png in Resources */,
 				834990601A9904FE00669A1A /* styles.css in Resources */,
-				834990481A9904FE00669A1A /* contact.png in Resources */,
-				834990471A9904FE00669A1A /* Contact OSHA.htm in Resources */,
-				834990551A9904FE00669A1A /* img6.png in Resources */,
 				83FDDFDF1A66C9470018A068 /* Main.storyboard in Resources */,
 				8349903B1A9904FE00669A1A /* img7.png in Resources */,
-				8349904A1A9904FE00669A1A /* HeatAppWeb.tmproj in Resources */,
 				83E9C2AF1A95024800BE4019 /* chevron@2x.png in Resources */,
 				834990341A9904FE00669A1A /* heatstroke.png in Resources */,
-				834990411A9904FE00669A1A /* precautions_moderate.htm in Resources */,
-				834990531A9904FE00669A1A /* img4.png in Resources */,
+				835882BD1AA384BE005A3761 /* precautions_moderate.html in Resources */,
 				834990381A9904FE00669A1A /* img4.png in Resources */,
 				8349905F1A9904FE00669A1A /* Signs and Symptoms.htm in Resources */,
-				834990451A9904FE00669A1A /* About This App.htm in Resources */,
-				8349902B1A9904FE00669A1A /* app.js in Resources */,
 				83F96FC11A9CDDF000C7812C /* geo@2x.png in Resources */,
-				8349904F1A9904FE00669A1A /* heatstroke.png in Resources */,
 				83B573211A730CD10041A64E /* sTlUYgPo@2x.png in Resources */,
-				8349902C1A9904FE00669A1A /* Contact OSHA.htm in Resources */,
+				835882B01AA380AC005A3761 /* Contact OSHA.html in Resources */,
 				834990321A9904FE00669A1A /* heatexhaustion.png in Resources */,
 				834990491A9904FE00669A1A /* First Aid.htm in Resources */,
 				83E1113D1A72FFA6007DE234 /* moreinfo_firstAid@2x.png in Resources */,
 				8349903D1A9904FE00669A1A /* img9.png in Resources */,
-				8349905D1A9904FE00669A1A /* precautions_moderate.htm in Resources */,
-				834990421A9904FE00669A1A /* precautions_veryhigh.htm in Resources */,
-				834990501A9904FE00669A1A /* img1.png in Resources */,
-				8349904D1A9904FE00669A1A /* heatexhaustion.png in Resources */,
+				835882C51AA385AD005A3761 /* precautions_veryhigh.html in Resources */,
 				83FDDFE41A66C9470018A068 /* LaunchScreen.xib in Resources */,
 				83E9C2B41A952BFB00BE4019 /* temperature@2x.png in Resources */,
 				834990431A9904FE00669A1A /* Signs and Symptoms.htm in Resources */,
-				8349905B1A9904FE00669A1A /* precautions_high.htm in Resources */,
 				83FDDFE11A66C9470018A068 /* Images.xcassets in Resources */,
 				834990371A9904FE00669A1A /* img3.png in Resources */,
-				8349903E1A9904FE00669A1A /* More Detail.htm in Resources */,
-				834990561A9904FE00669A1A /* img7.png in Resources */,
-				834990591A9904FE00669A1A /* More Detail.htm in Resources */,
-				834990511A9904FE00669A1A /* img2.png in Resources */,
+				835882B51AA381E8005A3761 /* More Detail.html in Resources */,
 				8349903A1A9904FE00669A1A /* img6.png in Resources */,
-				8349903F1A9904FE00669A1A /* precautions_high.htm in Resources */,
-				8349902F1A9904FE00669A1A /* HeatAppWeb.tmproj in Resources */,
+				835882C11AA38535005A3761 /* precautions_high.html in Resources */,
 				834990361A9904FE00669A1A /* img2.png in Resources */,
 				83E1113B1A72FFA6007DE234 /* moreinfo_contact@2x.png in Resources */,
 				83E1113F1A72FFA6007DE234 /* moreinfo_more@2x.png in Resources */,
 				834990311A9904FE00669A1A /* heatcramps.png in Resources */,
-				8349902A1A9904FE00669A1A /* About This App.htm in Resources */,
-				8349904C1A9904FE00669A1A /* heatcramps.png in Resources */,
+				835882A71AA37CF7005A3761 /* About This App.html in Resources */,
 				834990391A9904FE00669A1A /* img5.png in Resources */,
-				834990571A9904FE00669A1A /* img8.png in Resources */,
 				83E9C2B51A952BFB00BE4019 /* location@2x.png in Resources */,
 				8349902E1A9904FE00669A1A /* First Aid.htm in Resources */,
 				8349903C1A9904FE00669A1A /* img8.png in Resources */,
@@ -509,7 +407,6 @@
 				834990441A9904FE00669A1A /* styles.css in Resources */,
 				83E111391A72FFA6007DE234 /* moreinfo_about@2x.png in Resources */,
 				8349905A1A9904FE00669A1A /* more_info.htm in Resources */,
-				834990521A9904FE00669A1A /* img3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -554,10 +451,74 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		835882A91AA37CF7005A3761 /* About This App.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882A81AA37CF7005A3761 /* Base */,
+				835882AE1AA37DFA005A3761 /* es */,
+			);
+			name = "About This App.html";
+			sourceTree = "<group>";
+		};
+		835882B21AA380AC005A3761 /* Contact OSHA.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882B31AA380AF005A3761 /* Base */,
+				835882B41AA380D4005A3761 /* es */,
+			);
+			name = "Contact OSHA.html";
+			sourceTree = "<group>";
+		};
+		835882B71AA381E8005A3761 /* More Detail.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882B61AA381E8005A3761 /* Base */,
+				835882B81AA381ED005A3761 /* es */,
+			);
+			name = "More Detail.html";
+			sourceTree = "<group>";
+		};
+		835882BB1AA383AF005A3761 /* precautions_lower.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882BA1AA383AF005A3761 /* Base */,
+				835882BC1AA383B2005A3761 /* es */,
+			);
+			name = precautions_lower.html;
+			sourceTree = "<group>";
+		};
+		835882BF1AA384BE005A3761 /* precautions_moderate.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882BE1AA384BE005A3761 /* Base */,
+				835882C01AA384BF005A3761 /* es */,
+			);
+			name = precautions_moderate.html;
+			sourceTree = "<group>";
+		};
+		835882C31AA38535005A3761 /* precautions_high.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882C21AA38535005A3761 /* Base */,
+				835882C41AA38553005A3761 /* es */,
+			);
+			name = precautions_high.html;
+			sourceTree = "<group>";
+		};
+		835882C71AA385AD005A3761 /* precautions_veryhigh.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				835882C61AA385AD005A3761 /* Base */,
+				835882C81AA385AF005A3761 /* es */,
+			);
+			name = precautions_veryhigh.html;
+			sourceTree = "<group>";
+		};
 		83FDDFDD1A66C9470018A068 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				83FDDFDE1A66C9470018A068 /* Base */,
+				835882A61AA37CE9005A3761 /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

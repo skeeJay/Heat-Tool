@@ -1,0 +1,30 @@
+
+/* Class = "IBUIButton"; normalTitle = "--, --"; ObjectID = "0do-1N-Sfn"; */
+"0do-1N-Sfn.normalTitle" = "--, --";
+
+/* Class = "IBUIButton"; normalTitle = "--"; ObjectID = "4wG-r6-Yyj"; */
+"4wG-r6-Yyj.normalTitle" = "--";
+
+/* Class = "IBUILabel"; text = "Around 3:00 PM"; ObjectID = "6va-OD-rCb"; */
+"6va-OD-rCb.text" = "Around 3:00 PM";
+
+/* Class = "IBUINavigationItem"; title = "Precautions"; ObjectID = "BU0-3k-GCJ"; */
+"BU0-3k-GCJ.title" = "Precautions";
+
+/* Class = "IBUINavigationItem"; title = "More Info"; ObjectID = "O71-Wf-rlr"; */
+"O71-Wf-rlr.title" = "More Info";
+
+/* Class = "IBUILabel"; text = "Now"; ObjectID = "Wan-YT-Oua"; */
+"Wan-YT-Oua.text" = "Now";
+
+/* Class = "IBUILabel"; text = "Feels Like --º F"; ObjectID = "YbO-MY-bxl"; */
+"YbO-MY-bxl.text" = "Feels Like --º F";
+
+/* Class = "IBUINavigationItem"; title = "Heat Index"; ObjectID = "l2i-F2-GRk"; */
+"l2i-F2-GRk.title" = "Heat Index";
+
+/* Class = "IBUILabel"; text = "Very High To Extreme Risk"; ObjectID = "s5z-8M-8JI"; */
+"s5z-8M-8JI.text" = "Very High To Extreme Risk";
+
+/* Class = "IBUILabel"; text = "Today’s Max"; ObjectID = "wpU-lh-aUv"; */
+"wpU-lh-aUv.text" = "Today’s Max";

@@ -20,7 +20,7 @@ class WebViewController: UIViewController {
         self.title = infoContent
 
         // Do any additional setup after loading the view.
-        let localfilePath = NSBundle.mainBundle().URLForResource(infoContent, withExtension: "htm")
+        let localfilePath = NSBundle.mainBundle().URLForResource(infoContent, withExtension: "html")
         let myRequest = NSURLRequest(URL: localfilePath!)
         webView.loadRequest(myRequest)
     }
@@ -30,7 +30,6 @@ class WebViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
     /*
     // MARK: - Navigation
 

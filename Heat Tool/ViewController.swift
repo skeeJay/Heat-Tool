@@ -90,12 +90,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
         locManager.requestWhenInUseAuthorization();
     }
     
-    func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-            self.locationActivityIndicator.startAnimating()
-            manager.startUpdatingLocation()
-        }
-    }
+//    func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+//        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+//            self.locationActivityIndicator.startAnimating()
+//            manager.startUpdatingLocation()
+//        }
+//    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
         locManager.stopUpdatingLocation()
