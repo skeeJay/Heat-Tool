@@ -20,9 +20,15 @@ class WebViewController: UIViewController {
         self.title = infoContent
 
         // Do any additional setup after loading the view.
-        let localfilePath = NSBundle.mainBundle().URLForResource(infoContent, withExtension: "html")
-        let myRequest = NSURLRequest(URL: localfilePath!)
-        webView.loadRequest(myRequest)
+        var localFilePath = NSBundle.mainBundle().pathForResource(infoContent
+            , ofType: "html")
+        var contents = NSString(contentsOfFile: localFilePath!, encoding: NSUTF8StringEncoding, error: nil)
+        
+        // Set the base URL for the web view so we can access resources
+        var path = NSBundle.mainBundle().bundlePath
+        var baseUrl  = NSURL.fileURLWithPath("\(path)")
+        
+        webView.loadHTMLString(contents, baseURL: baseUrl)
     }
 
     override func didReceiveMemoryWarning() {
