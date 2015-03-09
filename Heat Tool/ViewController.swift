@@ -40,6 +40,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     var elements = NSMutableDictionary()
     var element = NSString()
     var buffer = NSMutableString()
+    var inHourlyTemp = false
+    var inHourlyHumidity = false
     
     var riskLevel = 0;
     
@@ -90,6 +92,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
         locManager.requestWhenInUseAuthorization();
     }
     
+    // Update state with the user's location on load
 //    func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
 //        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
 //            self.locationActivityIndicator.startAnimating()
@@ -114,12 +117,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
 //        self.newForecast.refreshWeatherData()
     }
     
-    func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!)
-    {
+    func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!) {
         element = elementName
 
         buffer = NSMutableString.alloc()
         buffer = ""
+        
+        if (attributeDict["type"] != nil) {
+            if attributeDict["type"] as NSString == "hourly" {
+                println(attributeDict["type"] as NSString)
+                inHourlyTemp = true
+            }
+        }
+        
+        if elementName == "humidity" {
+            inHourlyHumidity = true
+        }
     }
     
     func parser(parser: NSXMLParser!, foundCharacters string: String!) {
@@ -127,13 +140,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     }
     
     func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
-        if (elementName as NSString).isEqualToString("description") {
+        if elementName == "description" || elementName == "area-description" {
             self.locationButton.setTitle(buffer, forState: .Normal)
             self.locationButton.alpha = 1
-            
-            self.temperatureTextField.text = "34"
-            self.humidityTextField.text = "41"
-            
+        }
+        
+        if elementName == "value" && inHourlyTemp {
+            self.temperatureTextField.text = buffer
+            inHourlyTemp = false
+        }
+        
+        if elementName == "value" && inHourlyHumidity {
+            self.humidityTextField.text = buffer
+            inHourlyHumidity = false
+        }
+        
+        if elementName == "dwml" {
             self.temperatureTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.0)
             self.humidityTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.0)
             
@@ -142,7 +164,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
                 }, completion: nil)
             
             self.locationActivityIndicator.stopAnimating()
-
+            
             self.updateRiskLevel()
         }
     }
@@ -255,7 +277,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     @IBAction func focusLocation(sender: AnyObject) {
         var alert = UIAlertController(title: "Use My Location", message: "Get conditions at your current location?", preferredStyle: UIAlertControllerStyle.Alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Use My Location", style: .Default, handler: { action in
+        alert.addAction(UIAlertAction(title: "My Location", style: .Default, handler: { action in
             self.locationActivityIndicator.startAnimating()
             self.locManager.startUpdatingLocation()
         }))
