@@ -146,23 +146,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		83498FEF1A9904FE00669A1A /* heatappweb_en */ = {
-			isa = PBXGroup;
-			children = (
-				835882A91AA37CF7005A3761 /* About This App.html */,
-				835882B21AA380AC005A3761 /* Contact OSHA.html */,
-				83D7467E1AAE744F006C5865 /* First Aid.html */,
-				83498FF61A9904FE00669A1A /* images */,
-				835882B71AA381E8005A3761 /* More Detail.html */,
-				835882C31AA38535005A3761 /* precautions_high.html */,
-				835882BB1AA383AF005A3761 /* precautions_lower.html */,
-				835882BF1AA384BE005A3761 /* precautions_moderate.html */,
-				835882C71AA385AD005A3761 /* precautions_veryhigh.html */,
-				83D746821AAE749D006C5865 /* Signs and Symptoms.html */,
-			);
-			path = heatappweb_en;
-			sourceTree = "<group>";
-		};
 		83498FF61A9904FE00669A1A /* images */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,7 +164,31 @@
 				834990031A9904FE00669A1A /* img8.png */,
 				834990041A9904FE00669A1A /* img9.png */,
 			);
-			path = images;
+			name = images;
+			path = heatappweb_en/images;
+			sourceTree = "<group>";
+		};
+		83E32F801AAE7A5800082646 /* webviews */ = {
+			isa = PBXGroup;
+			children = (
+				835882A91AA37CF7005A3761 /* About This App.html */,
+				835882B21AA380AC005A3761 /* Contact OSHA.html */,
+				83D7467E1AAE744F006C5865 /* First Aid.html */,
+				835882B71AA381E8005A3761 /* More Detail.html */,
+				83D746821AAE749D006C5865 /* Signs and Symptoms.html */,
+			);
+			name = webviews;
+			sourceTree = "<group>";
+		};
+		83E32F811AAE7A6700082646 /* precautions */ = {
+			isa = PBXGroup;
+			children = (
+				835882C31AA38535005A3761 /* precautions_high.html */,
+				835882BB1AA383AF005A3761 /* precautions_lower.html */,
+				835882BF1AA384BE005A3761 /* precautions_moderate.html */,
+				835882C71AA385AD005A3761 /* precautions_veryhigh.html */,
+			);
+			name = precautions;
 			sourceTree = "<group>";
 		};
 		83FDDFCB1A66C9470018A068 = {
@@ -223,7 +230,9 @@
 		83FDDFD71A66C9470018A068 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				83498FEF1A9904FE00669A1A /* heatappweb_en */,
+				83E32F811AAE7A6700082646 /* precautions */,
+				83E32F801AAE7A5800082646 /* webviews */,
+				83498FF61A9904FE00669A1A /* images */,
 				83F96FBF1A9CDDF000C7812C /* geo@2x.png */,
 				83E9C2AE1A95024800BE4019 /* chevron@2x.png */,
 				83E9C2B11A952BFB00BE4019 /* location@2x.png */,
@@ -428,6 +437,7 @@
 				835882AE1AA37DFA005A3761 /* es */,
 			);
 			name = "About This App.html";
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882B21AA380AC005A3761 /* Contact OSHA.html */ = {
@@ -437,6 +447,7 @@
 				835882B41AA380D4005A3761 /* es */,
 			);
 			name = "Contact OSHA.html";
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882B71AA381E8005A3761 /* More Detail.html */ = {
@@ -446,6 +457,7 @@
 				835882B81AA381ED005A3761 /* es */,
 			);
 			name = "More Detail.html";
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882BB1AA383AF005A3761 /* precautions_lower.html */ = {
@@ -455,6 +467,7 @@
 				835882BC1AA383B2005A3761 /* es */,
 			);
 			name = precautions_lower.html;
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882BF1AA384BE005A3761 /* precautions_moderate.html */ = {
@@ -464,6 +477,7 @@
 				835882C01AA384BF005A3761 /* es */,
 			);
 			name = precautions_moderate.html;
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882C31AA38535005A3761 /* precautions_high.html */ = {
@@ -473,6 +487,7 @@
 				835882C41AA38553005A3761 /* es */,
 			);
 			name = precautions_high.html;
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		835882C71AA385AD005A3761 /* precautions_veryhigh.html */ = {
@@ -482,6 +497,7 @@
 				835882C81AA385AF005A3761 /* es */,
 			);
 			name = precautions_veryhigh.html;
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		83D7467E1AAE744F006C5865 /* First Aid.html */ = {
@@ -491,6 +507,7 @@
 				83D7467F1AAE7451006C5865 /* es */,
 			);
 			name = "First Aid.html";
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		83D746821AAE749D006C5865 /* Signs and Symptoms.html */ = {
@@ -500,6 +517,7 @@
 				83D746831AAE74A0006C5865 /* es */,
 			);
 			name = "Signs and Symptoms.html";
+			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
 		83FDDFDD1A66C9470018A068 /* Main.storyboard */ = {
