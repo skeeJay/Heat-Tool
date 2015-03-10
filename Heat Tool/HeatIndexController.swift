@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class HeatIndexController: UIViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
+class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
     
 //    let newForecast = Weather(lat: "38.893554",long: "-78.015232")
 
@@ -49,6 +49,9 @@ class HeatIndexController: UIViewController, CLLocationManagerDelegate, NSXMLPar
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // View name for Google Analytics
+        self.screenName = "Heat Index Screen"
         
         // Starter colors for navbar
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
@@ -181,7 +184,7 @@ class HeatIndexController: UIViewController, CLLocationManagerDelegate, NSXMLPar
             // Risk won't be greater than minimal for the rest of the day
             if maxIndex == -1 {
                 self.todaysMaxRisk.text = "Minimal Risk From Heat"
-                self.todaysMaxTime.text = "Now"
+                self.todaysMaxTime.text = ""
             // The risk now is the highest for the rest of the day
             } else if maxIndex == 0 {
                 switch maxHeatIndex {
