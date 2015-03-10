@@ -9,7 +9,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
+class HeatIndexController: UIViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
     
 //    let newForecast = Weather(lat: "38.893554",long: "-78.015232")
 
@@ -36,7 +36,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     var locManager: CLLocationManager!
     
     var parser = NSXMLParser()
-    var posts = NSMutableArray()
+    var temperatures = NSMutableArray()
+    var humidities = NSMutableArray()
     var elements = NSMutableDictionary()
     var element = NSString()
     var buffer = NSMutableString()
@@ -93,39 +94,33 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     }
     
     // Update state with the user's location on load
-//    func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-//        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
-//            self.locationActivityIndicator.startAnimating()
-//            manager.startUpdatingLocation()
-//        }
-//    }
+    func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            self.locationActivityIndicator.startAnimating()
+            manager.startUpdatingLocation()
+        }
+    }
     
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
         locManager.stopUpdatingLocation()
         
-        print("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
+        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
         
-        posts = []
+        temperatures = []
+        humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
         parser.delegate = self
         parser.parse()
-        
-//        self.newForecast.latitude = "\(locations[locations.count-1].coordinate.latitude)"
-//        self.newForecast.longitude = "\(locations[locations.count-1].coordinate.longitude)"
-//
-//        // get data
-//        self.newForecast.refreshWeatherData()
     }
     
     func parser(parser: NSXMLParser!, didStartElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!, attributes attributeDict: [NSObject : AnyObject]!) {
         element = elementName
-
+        
         buffer = NSMutableString.alloc()
         buffer = ""
         
         if (attributeDict["type"] != nil) {
             if attributeDict["type"] as NSString == "hourly" {
-                println(attributeDict["type"] as NSString)
                 inHourlyTemp = true
             }
         }
@@ -146,16 +141,82 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
         }
         
         if elementName == "value" && inHourlyTemp {
-            self.temperatureTextField.text = buffer
-            inHourlyTemp = false
+            temperatures.addObject(buffer)
         }
         
         if elementName == "value" && inHourlyHumidity {
-            self.humidityTextField.text = buffer
+            humidities.addObject(buffer)
+        }
+        
+        if elementName == "temperature" && inHourlyTemp {
+            inHourlyTemp = false
+        }
+        
+        if elementName == "humidity" {
             inHourlyHumidity = false
         }
         
+        // If parsing is complete
         if elementName == "dwml" {
+            // Set current temperature and humidity to the first hour in the forecast
+            self.temperatureTextField.text = temperatures[0] as NSString
+            self.humidityTextField.text = humidities[0] as NSString
+            
+            // Look for the maximum in the next 12 hours
+            var maxIndex = -1
+            var maxHeatIndex = -1000.0
+            for index in 0...11 {
+                println("Hour \(index): Temp: \(temperatures[index]), Humidity: \(humidities[index])")
+                
+                var newTempDouble = (temperatures[index] as NSString).doubleValue
+                var newHumidityDouble = (humidities[index] as NSString).doubleValue
+                var newHeatIndex = calculateHeatIndex(newTempDouble, humidity: newHumidityDouble)
+                if newTempDouble > 80.0 && newHeatIndex > maxHeatIndex {
+                    maxIndex = index
+                    maxHeatIndex = newHeatIndex
+                }
+            }
+            println("Max \(maxIndex): Heat: \(maxHeatIndex)")
+            
+            // Risk won't be greater than minimal for the rest of the day
+            if maxIndex == -1 {
+                self.todaysMaxRisk.text = "Minimal Risk From Heat"
+                self.todaysMaxTime.text = "Now"
+            // The risk now is the highest for the rest of the day
+            } else if maxIndex == 0 {
+                switch maxHeatIndex {
+                case 0..<91:
+                    self.todaysMaxRisk.text = "Lower Risk (Use Caution)"
+                case 91..<104:
+                    self.todaysMaxRisk.text = "Moderate Risk"
+                case 104..<116:
+                    self.todaysMaxRisk.text = "High\nRisk"
+                case 116..<1000:
+                    self.todaysMaxRisk.text = "Very High To Extreme Risk"
+                default:
+                    println("default")
+                }
+                
+                self.todaysMaxTime.text = "Now"
+            // There's a higher risk coming
+            } else {
+                switch maxHeatIndex {
+                case 0..<91:
+                    self.todaysMaxRisk.text = "Lower Risk (Use Caution)"
+                case 91..<104:
+                    self.todaysMaxRisk.text = "Moderate Risk"
+                case 104..<116:
+                    self.todaysMaxRisk.text = "High\nRisk"
+                case 116..<1000:
+                    self.todaysMaxRisk.text = "Very High To Extreme Risk"
+                default:
+                    println("default")
+                }
+
+                self.todaysMaxTime.text = "In \(maxIndex) Hours"
+            }
+            
+            // Switch temperature and humidity fields to auto-filled styling
             self.temperatureTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.0)
             self.humidityTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.0)
             
@@ -167,6 +228,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
             
             self.updateRiskLevel()
         }
+    }
+    
+    func calculateHeatIndex(tempInF: Double, humidity: Double) -> Double {
+        var calculatedHeatIndexF = 0.0
+        
+        // Broke the formula up in pieces since its orginal incarnation was causing problems with Xcode
+        calculatedHeatIndexF = -42.379 + (2.04901523 * tempInF)
+        calculatedHeatIndexF += 10.14333127 * humidity
+        calculatedHeatIndexF -= 0.22475541 * tempInF * humidity
+        calculatedHeatIndexF -= 6.83783 * pow(10, -3) * pow(tempInF,2)
+        calculatedHeatIndexF -= 5.481717 * pow(10,-2) * pow(humidity,2)
+        calculatedHeatIndexF += 1.22874 * pow(10, -3) * pow(tempInF,2) * humidity
+        calculatedHeatIndexF += 8.5282 * pow(10,-4) * tempInF * pow(humidity,2)
+        calculatedHeatIndexF -= 1.99 * pow(10,-6) * pow(tempInF, 2) * pow(humidity, 2)
+        
+        return calculatedHeatIndexF
     }
     
     func updateRiskLevel() {
@@ -188,15 +265,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
             buttonColor = UIColor.blackColor()
             labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         } else {
-            // Broke the formula up in pieces since its orginal incarnation was causing problems with Xcode
-            calculatedHeatIndexF = -42.379 + (2.04901523 * tempInF)
-            calculatedHeatIndexF += 10.14333127 * humidity
-            calculatedHeatIndexF -= 0.22475541 * tempInF * humidity
-            calculatedHeatIndexF -= 6.83783 * pow(10, -3) * pow(tempInF,2)
-            calculatedHeatIndexF -= 5.481717 * pow(10,-2) * pow(humidity,2)
-            calculatedHeatIndexF += 1.22874 * pow(10, -3) * pow(tempInF,2) * humidity
-            calculatedHeatIndexF += 8.5282 * pow(10,-4) * tempInF * pow(humidity,2)
-            calculatedHeatIndexF -= 1.99 * pow(10,-6) * pow(tempInF, 2) * pow(humidity, 2)
+            calculatedHeatIndexF = calculateHeatIndex(tempInF, humidity: humidity)
             
             switch Int(calculatedHeatIndexF) {
             case 0..<91:
@@ -275,13 +344,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate, NSXMLParserDe
     }
 
     @IBAction func focusLocation(sender: AnyObject) {
-        var alert = UIAlertController(title: "Use My Location", message: "Get conditions at your current location?", preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "My Location", style: .Default, handler: { action in
-            self.locationActivityIndicator.startAnimating()
-            self.locManager.startUpdatingLocation()
-        }))
-        self.presentViewController(alert, animated: true, completion: nil)
+        self.locationActivityIndicator.startAnimating()
+        self.locManager.startUpdatingLocation()
     }
     
     @IBAction func focusTemperature(sender: AnyObject) {

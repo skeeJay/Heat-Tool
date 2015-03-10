@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		831FF0D21AA284FA00A88F49 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 831FF0D11AA284FA00A88F49 /* WebViewController.swift */; };
 		8349902D1A9904FE00669A1A /* contact.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF31A9904FE00669A1A /* contact.png */; };
-		8349902E1A9904FE00669A1A /* First Aid.htm in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF41A9904FE00669A1A /* First Aid.htm */; };
-		834990301A9904FE00669A1A /* bigBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF71A9904FE00669A1A /* bigBlue.png */; };
 		834990311A9904FE00669A1A /* heatcramps.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF81A9904FE00669A1A /* heatcramps.png */; };
 		834990321A9904FE00669A1A /* heatexhaustion.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FF91A9904FE00669A1A /* heatexhaustion.png */; };
 		834990331A9904FE00669A1A /* heatfatigue.png in Resources */ = {isa = PBXBuildFile; fileRef = 83498FFA1A9904FE00669A1A /* heatfatigue.png */; };
@@ -24,12 +22,6 @@
 		8349903B1A9904FE00669A1A /* img7.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990021A9904FE00669A1A /* img7.png */; };
 		8349903C1A9904FE00669A1A /* img8.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990031A9904FE00669A1A /* img8.png */; };
 		8349903D1A9904FE00669A1A /* img9.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990041A9904FE00669A1A /* img9.png */; };
-		834990431A9904FE00669A1A /* Signs and Symptoms.htm in Resources */ = {isa = PBXBuildFile; fileRef = 8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */; };
-		834990441A9904FE00669A1A /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 8349900B1A9904FE00669A1A /* styles.css */; };
-		834990491A9904FE00669A1A /* First Aid.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990111A9904FE00669A1A /* First Aid.htm */; };
-		8349905A1A9904FE00669A1A /* more_info.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990231A9904FE00669A1A /* more_info.htm */; };
-		8349905F1A9904FE00669A1A /* Signs and Symptoms.htm in Resources */ = {isa = PBXBuildFile; fileRef = 834990281A9904FE00669A1A /* Signs and Symptoms.htm */; };
-		834990601A9904FE00669A1A /* styles.css in Resources */ = {isa = PBXBuildFile; fileRef = 834990291A9904FE00669A1A /* styles.css */; };
 		835882A71AA37CF7005A3761 /* About This App.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882A91AA37CF7005A3761 /* About This App.html */; };
 		835882B01AA380AC005A3761 /* Contact OSHA.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B21AA380AC005A3761 /* Contact OSHA.html */; };
 		835882B51AA381E8005A3761 /* More Detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B71AA381E8005A3761 /* More Detail.html */; };
@@ -41,6 +33,8 @@
 		8386109E1A93E37D000A1904 /* PrecautionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386109D1A93E37D000A1904 /* PrecautionsController.swift */; };
 		838610A51A941350000A1904 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831D9A951A8EB30800B4EB56 /* CoreLocation.framework */; };
 		83B573211A730CD10041A64E /* sTlUYgPo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B573201A730CD10041A64E /* sTlUYgPo@2x.png */; };
+		83D7467C1AAE744F006C5865 /* First Aid.html in Resources */ = {isa = PBXBuildFile; fileRef = 83D7467E1AAE744F006C5865 /* First Aid.html */; };
+		83D746801AAE749D006C5865 /* Signs and Symptoms.html in Resources */ = {isa = PBXBuildFile; fileRef = 83D746821AAE749D006C5865 /* Signs and Symptoms.html */; };
 		83E111391A72FFA6007DE234 /* moreinfo_about@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */; };
 		83E1113B1A72FFA6007DE234 /* moreinfo_contact@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */; };
 		83E1113D1A72FFA6007DE234 /* moreinfo_firstAid@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */; };
@@ -52,7 +46,7 @@
 		83E9C2B71A952BFB00BE4019 /* humidity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E9C2B31A952BFB00BE4019 /* humidity@2x.png */; };
 		83F96FC11A9CDDF000C7812C /* geo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F96FBF1A9CDDF000C7812C /* geo@2x.png */; };
 		83FDDFDA1A66C9470018A068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDDFD91A66C9470018A068 /* AppDelegate.swift */; };
-		83FDDFDC1A66C9470018A068 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDDFDB1A66C9470018A068 /* ViewController.swift */; };
+		83FDDFDC1A66C9470018A068 /* HeatIndexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDDFDB1A66C9470018A068 /* HeatIndexController.swift */; };
 		83FDDFDF1A66C9470018A068 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83FDDFDD1A66C9470018A068 /* Main.storyboard */; };
 		83FDDFE11A66C9470018A068 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83FDDFE01A66C9470018A068 /* Images.xcassets */; };
 		83FDDFE41A66C9470018A068 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83FDDFE21A66C9470018A068 /* LaunchScreen.xib */; };
@@ -73,9 +67,7 @@
 /* Begin PBXFileReference section */
 		831D9A951A8EB30800B4EB56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		831FF0D11AA284FA00A88F49 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		83498FF31A9904FE00669A1A /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = contact.png; sourceTree = "<group>"; };
-		83498FF41A9904FE00669A1A /* First Aid.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "First Aid.htm"; sourceTree = "<group>"; };
-		83498FF71A9904FE00669A1A /* bigBlue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bigBlue.png; sourceTree = "<group>"; };
+		83498FF31A9904FE00669A1A /* contact.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = contact.png; path = ../contact.png; sourceTree = "<group>"; };
 		83498FF81A9904FE00669A1A /* heatcramps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatcramps.png; sourceTree = "<group>"; };
 		83498FF91A9904FE00669A1A /* heatexhaustion.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatexhaustion.png; sourceTree = "<group>"; };
 		83498FFA1A9904FE00669A1A /* heatfatigue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heatfatigue.png; sourceTree = "<group>"; };
@@ -89,12 +81,6 @@
 		834990021A9904FE00669A1A /* img7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img7.png; sourceTree = "<group>"; };
 		834990031A9904FE00669A1A /* img8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img8.png; sourceTree = "<group>"; };
 		834990041A9904FE00669A1A /* img9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img9.png; sourceTree = "<group>"; };
-		8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Signs and Symptoms.htm"; sourceTree = "<group>"; };
-		8349900B1A9904FE00669A1A /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
-		834990111A9904FE00669A1A /* First Aid.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "First Aid.htm"; sourceTree = "<group>"; };
-		834990231A9904FE00669A1A /* more_info.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = more_info.htm; sourceTree = "<group>"; };
-		834990281A9904FE00669A1A /* Signs and Symptoms.htm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = "Signs and Symptoms.htm"; sourceTree = "<group>"; };
-		834990291A9904FE00669A1A /* styles.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = styles.css; sourceTree = "<group>"; };
 		835882A61AA37CE9005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		835882A81AA37CF7005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/About This App.html"; sourceTree = "<group>"; };
 		835882AE1AA37DFA005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/About This App.html"; sourceTree = "<group>"; };
@@ -114,6 +100,10 @@
 		8386109D1A93E37D000A1904 /* PrecautionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecautionsController.swift; sourceTree = "<group>"; };
 		838610A31A9411B0000A1904 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83B573201A730CD10041A64E /* sTlUYgPo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sTlUYgPo@2x.png"; sourceTree = "<group>"; };
+		83D7467D1AAE744F006C5865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/First Aid.html"; sourceTree = "<group>"; };
+		83D7467F1AAE7451006C5865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/First Aid.html"; sourceTree = "<group>"; };
+		83D746811AAE749D006C5865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Signs and Symptoms.html"; sourceTree = "<group>"; };
+		83D746831AAE74A0006C5865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/Signs and Symptoms.html"; sourceTree = "<group>"; };
 		83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_about@2x.png"; sourceTree = "<group>"; };
 		83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_contact@2x.png"; sourceTree = "<group>"; };
 		83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_firstAid@2x.png"; sourceTree = "<group>"; };
@@ -127,7 +117,7 @@
 		83FDDFD41A66C9470018A068 /* Heat Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heat Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FDDFD81A66C9470018A068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83FDDFD91A66C9470018A068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		83FDDFDB1A66C9470018A068 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		83FDDFDB1A66C9470018A068 /* HeatIndexController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeatIndexController.swift; sourceTree = "<group>"; };
 		83FDDFDE1A66C9470018A068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		83FDDFE01A66C9470018A068 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		83FDDFE31A66C9470018A068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -161,16 +151,14 @@
 			children = (
 				835882A91AA37CF7005A3761 /* About This App.html */,
 				835882B21AA380AC005A3761 /* Contact OSHA.html */,
-				83498FF31A9904FE00669A1A /* contact.png */,
-				83498FF41A9904FE00669A1A /* First Aid.htm */,
+				83D7467E1AAE744F006C5865 /* First Aid.html */,
 				83498FF61A9904FE00669A1A /* images */,
 				835882B71AA381E8005A3761 /* More Detail.html */,
 				835882C31AA38535005A3761 /* precautions_high.html */,
 				835882BB1AA383AF005A3761 /* precautions_lower.html */,
 				835882BF1AA384BE005A3761 /* precautions_moderate.html */,
 				835882C71AA385AD005A3761 /* precautions_veryhigh.html */,
-				8349900A1A9904FE00669A1A /* Signs and Symptoms.htm */,
-				8349900B1A9904FE00669A1A /* styles.css */,
+				83D746821AAE749D006C5865 /* Signs and Symptoms.html */,
 			);
 			path = heatappweb_en;
 			sourceTree = "<group>";
@@ -178,7 +166,7 @@
 		83498FF61A9904FE00669A1A /* images */ = {
 			isa = PBXGroup;
 			children = (
-				83498FF71A9904FE00669A1A /* bigBlue.png */,
+				83498FF31A9904FE00669A1A /* contact.png */,
 				83498FF81A9904FE00669A1A /* heatcramps.png */,
 				83498FF91A9904FE00669A1A /* heatexhaustion.png */,
 				83498FFA1A9904FE00669A1A /* heatfatigue.png */,
@@ -194,17 +182,6 @@
 				834990041A9904FE00669A1A /* img9.png */,
 			);
 			path = images;
-			sourceTree = "<group>";
-		};
-		8349900C1A9904FE00669A1A /* heatappweb_es */ = {
-			isa = PBXGroup;
-			children = (
-				834990111A9904FE00669A1A /* First Aid.htm */,
-				834990231A9904FE00669A1A /* more_info.htm */,
-				834990281A9904FE00669A1A /* Signs and Symptoms.htm */,
-				834990291A9904FE00669A1A /* styles.css */,
-			);
-			path = heatappweb_es;
 			sourceTree = "<group>";
 		};
 		83FDDFCB1A66C9470018A068 = {
@@ -233,7 +210,7 @@
 				83FDDFD91A66C9470018A068 /* AppDelegate.swift */,
 				835E0C141A72F14400F47229 /* MoreInfoController.swift */,
 				8386109D1A93E37D000A1904 /* PrecautionsController.swift */,
-				83FDDFDB1A66C9470018A068 /* ViewController.swift */,
+				83FDDFDB1A66C9470018A068 /* HeatIndexController.swift */,
 				831FF0D11AA284FA00A88F49 /* WebViewController.swift */,
 				83FDDFDD1A66C9470018A068 /* Main.storyboard */,
 				83FDDFE01A66C9470018A068 /* Images.xcassets */,
@@ -247,7 +224,6 @@
 			isa = PBXGroup;
 			children = (
 				83498FEF1A9904FE00669A1A /* heatappweb_en */,
-				8349900C1A9904FE00669A1A /* heatappweb_es */,
 				83F96FBF1A9CDDF000C7812C /* geo@2x.png */,
 				83E9C2AE1A95024800BE4019 /* chevron@2x.png */,
 				83E9C2B11A952BFB00BE4019 /* location@2x.png */,
@@ -366,29 +342,25 @@
 				83E111411A72FFA6007DE234 /* moreinfo_signs@2x.png in Resources */,
 				835882B91AA383AF005A3761 /* precautions_lower.html in Resources */,
 				8349902D1A9904FE00669A1A /* contact.png in Resources */,
-				834990301A9904FE00669A1A /* bigBlue.png in Resources */,
 				834990351A9904FE00669A1A /* img1.png in Resources */,
 				83FDDFFA1A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png in Resources */,
 				834990331A9904FE00669A1A /* heatfatigue.png in Resources */,
-				834990601A9904FE00669A1A /* styles.css in Resources */,
 				83FDDFDF1A66C9470018A068 /* Main.storyboard in Resources */,
 				8349903B1A9904FE00669A1A /* img7.png in Resources */,
 				83E9C2AF1A95024800BE4019 /* chevron@2x.png in Resources */,
 				834990341A9904FE00669A1A /* heatstroke.png in Resources */,
 				835882BD1AA384BE005A3761 /* precautions_moderate.html in Resources */,
 				834990381A9904FE00669A1A /* img4.png in Resources */,
-				8349905F1A9904FE00669A1A /* Signs and Symptoms.htm in Resources */,
 				83F96FC11A9CDDF000C7812C /* geo@2x.png in Resources */,
 				83B573211A730CD10041A64E /* sTlUYgPo@2x.png in Resources */,
 				835882B01AA380AC005A3761 /* Contact OSHA.html in Resources */,
 				834990321A9904FE00669A1A /* heatexhaustion.png in Resources */,
-				834990491A9904FE00669A1A /* First Aid.htm in Resources */,
 				83E1113D1A72FFA6007DE234 /* moreinfo_firstAid@2x.png in Resources */,
 				8349903D1A9904FE00669A1A /* img9.png in Resources */,
 				835882C51AA385AD005A3761 /* precautions_veryhigh.html in Resources */,
 				83FDDFE41A66C9470018A068 /* LaunchScreen.xib in Resources */,
 				83E9C2B41A952BFB00BE4019 /* temperature@2x.png in Resources */,
-				834990431A9904FE00669A1A /* Signs and Symptoms.htm in Resources */,
+				83D746801AAE749D006C5865 /* Signs and Symptoms.html in Resources */,
 				83FDDFE11A66C9470018A068 /* Images.xcassets in Resources */,
 				834990371A9904FE00669A1A /* img3.png in Resources */,
 				835882B51AA381E8005A3761 /* More Detail.html in Resources */,
@@ -401,12 +373,10 @@
 				835882A71AA37CF7005A3761 /* About This App.html in Resources */,
 				834990391A9904FE00669A1A /* img5.png in Resources */,
 				83E9C2B51A952BFB00BE4019 /* location@2x.png in Resources */,
-				8349902E1A9904FE00669A1A /* First Aid.htm in Resources */,
+				83D7467C1AAE744F006C5865 /* First Aid.html in Resources */,
 				8349903C1A9904FE00669A1A /* img8.png in Resources */,
 				83E9C2B71A952BFB00BE4019 /* humidity@2x.png in Resources */,
-				834990441A9904FE00669A1A /* styles.css in Resources */,
 				83E111391A72FFA6007DE234 /* moreinfo_about@2x.png in Resources */,
-				8349905A1A9904FE00669A1A /* more_info.htm in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,7 +394,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				83FDDFDC1A66C9470018A068 /* ViewController.swift in Sources */,
+				83FDDFDC1A66C9470018A068 /* HeatIndexController.swift in Sources */,
 				83FDDFDA1A66C9470018A068 /* AppDelegate.swift in Sources */,
 				8386109E1A93E37D000A1904 /* PrecautionsController.swift in Sources */,
 				831FF0D21AA284FA00A88F49 /* WebViewController.swift in Sources */,
@@ -512,6 +482,24 @@
 				835882C81AA385AF005A3761 /* es */,
 			);
 			name = precautions_veryhigh.html;
+			sourceTree = "<group>";
+		};
+		83D7467E1AAE744F006C5865 /* First Aid.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D7467D1AAE744F006C5865 /* Base */,
+				83D7467F1AAE7451006C5865 /* es */,
+			);
+			name = "First Aid.html";
+			sourceTree = "<group>";
+		};
+		83D746821AAE749D006C5865 /* Signs and Symptoms.html */ = {
+			isa = PBXVariantGroup;
+			children = (
+				83D746811AAE749D006C5865 /* Base */,
+				83D746831AAE74A0006C5865 /* es */,
+			);
+			name = "Signs and Symptoms.html";
 			sourceTree = "<group>";
 		};
 		83FDDFDD1A66C9470018A068 /* Main.storyboard */ = {
