@@ -309,7 +309,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Set text
             self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
-            if self.locationButton.titleLabel?.text == "User Entered Data" {
+            if self.locationButton.titleLabel?.text == "You’ve Entered Manual Data" {
                 self.locationButton.alpha = buttonColor == UIColor.blackColor() ? 0.2 : 0.5
                 self.nowLabel.text = "Calculated"
                 self.feelsLikeNow.text = "Would Feel Like \(Int(calculatedHeatIndexF))º F"
@@ -377,7 +377,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.humidityTextField.text = "0"
         }
         
-        self.locationButton.setTitle("User Entered Data", forState: .Normal)
+        self.locationButton.setTitle("You’ve Entered Manual Data", forState: .Normal)
         
         // Change backgrounds of text fields to show they're in "manual" mode
         self.temperatureTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.1)
