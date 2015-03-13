@@ -36,6 +36,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     var locManager: CLLocationManager!
     
     var parser = NSXMLParser()
+    var times = NSMutableArray()
     var temperatures = NSMutableArray()
     var humidities = NSMutableArray()
     var elements = NSMutableDictionary()
@@ -50,12 +51,16 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
+        // Set up reference to this view for app delegate so we can refresh data when the app enters the foreground
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate! as AppDelegate
+        appDelegate.myHeatIndexController = self
+        
         // View name for Google Analytics
         self.screenName = "Heat Index Screen"
         
         // Starter colors for navbar
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
         
         // Set up toolbar for keyboard
         var doneToolbar: UIToolbar = UIToolbar()
@@ -109,6 +114,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         
         println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
         
+        times = []
         temperatures = []
         humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
@@ -143,6 +149,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.locationButton.alpha = 1
         }
         
+        if elementName == "start-valid-time" {
+            times.addObject(buffer)
+        }
+        
         if elementName == "value" && inHourlyTemp {
             temperatures.addObject(buffer)
         }
@@ -167,6 +177,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Look for the maximum in the next 12 hours
             var maxIndex = -1
+            var maxTime:String = ""
             var maxHeatIndex = -1000.0
             for index in 0...11 {
                 println("Hour \(index): Temp: \(temperatures[index]), Humidity: \(humidities[index])")
@@ -177,6 +188,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 if newTempDouble > 80.0 && newHeatIndex > maxHeatIndex {
                     maxIndex = index
                     maxHeatIndex = newHeatIndex
+                    maxTime = (times[index] as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 }
             }
             println("Max \(maxIndex): Heat: \(maxHeatIndex)")
@@ -215,8 +227,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 default:
                     println("default")
                 }
-
-                self.todaysMaxTime.text = "In \(maxIndex) Hours"
+                
+                let dateFormatter = NSDateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+                println(maxTime)
+                let date = dateFormatter.dateFromString(maxTime)
+                println(date)
+                dateFormatter.dateFormat = "h:mm a"
+                self.todaysMaxTime.text = "At \(dateFormatter.stringFromDate(date!))"
             }
             
             // Switch temperature and humidity fields to auto-filled styling
@@ -264,7 +282,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.riskLevel = 0
             riskTitleString = "Minimal Risk From Heat"
             
-            backgroundColor = UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
+            backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
             buttonColor = UIColor.blackColor()
             labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         } else {
@@ -342,6 +360,15 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // I'm not sure why these aren't being inherited from the view tint
             self.locationButton.setTitleColor(buttonColor, forState: .Normal)
             self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
+
+            // Disable precautions button for minimal risk state
+            if (self.riskLevel == 0) {
+                self.riskButtonNow.enabled = false
+                self.riskButtonNow.alpha = buttonColor == UIColor.blackColor() ? 0.2 : 0.5
+            } else {
+                self.riskButtonNow.enabled = true
+                self.riskButtonNow.alpha = 1
+            }
             
             }, completion: nil)
     }
@@ -391,49 +418,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         updateRiskLevel()
     }
     
-//    func didCompleteForecast() {
-////        NSLog("%d", self.newForecast.sevenDayForecast[0].maxHeatIndex)
-//
-//        var humid = self.newForecast.sevenDayForecast[0].humidity[0]
-//        humidityButton.setTitle(String(humid) + "%", forState: .Normal)
-//        locationButton.setTitle(self.newForecast.locationDescription, forState: .Normal)
-//        
-////        let maxHeatIndex = self.newForecast.sevenDayForecast[0].maxHeatIndex
-////        println("max heat index for today is \(self.newForecast.sevenDayForecast[0].maxHeatIndex)")
-//        var currentTemp = Int(self.newForecast.sevenDayForecast[0].temperature[0]["F"]!)
-////        println("current temperature is \(currentTemp)")
-//        let currentHeatIndex = Int(self.newForecast.sevenDayForecast[0].heatIndex[0]["F"]!)
-//        let currentWindChill = Int(self.newForecast.sevenDayForecast[0].windChill[0]["F"]!)
-////        println("current heat index is \(currentHeatIndex)")
-////        dispatch_async(dispatch_get_main_queue()) {
-////            switch currentTemp {
-////            case 80..<180:
-////                self.riskType.text = "Heat Index:"
-////                self.perceivedTemperatureValue.text = "\(currentHeatIndex)"
-////                switch currentHeatIndex {
-////                case 116..<180:
-////                    self.riskValue.text = "Extreme"
-////                case 104..<116:
-////                    self.riskValue.text = "high"
-////                case 91..<104:
-////                    self.riskValue.text = "moderate"
-////                default:
-////                    self.riskValue.text = "lower"
-////                }
-////            case -100..<50:
-////                self.riskType.text = "Wind Chill:"
-////                self.perceivedTemperatureValue.text = "\(currentWindChill)"
-////            default:
-////                self.riskType.text = "Temperature:"
-////                println(currentTemp)
-////                self.perceivedTemperatureValue.text = "\(currentTemp)"
-////            }
-////        }
-//        
-//        temperatureButton.setTitle(String(currentTemp) + "º F", forState: .Normal)
-//        feelsLikeNow.text = "Feels Like \(currentWindChill)º F"
-//    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
