@@ -72,8 +72,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK9-rC-nX8">
                                 <rect key="frame" x="150" y="94" width="300" height="70"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0do-1N-Sfn">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0do-1N-Sfn">
                                         <rect key="frame" x="118" y="4" width="63" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="hWU-Hc-y9Q"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" title="--, --" image="geo.png">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
@@ -164,7 +167,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="9ID-ZP-2Ua" kind="presentation" identifier="" id="GRH-kQ-AgB"/>
+                                    <segue destination="9ID-ZP-2Ua" kind="presentation" identifier="moreInfoSegue" id="GRH-kQ-AgB"/>
                                 </connections>
                             </button>
                             <view alpha="0.0" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lAj-b5-MTe">
@@ -201,7 +204,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="0.84999999999999998" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="4wG-r6-Yyj" secondAttribute="centerX" id="3Fw-kU-Pee"/>
@@ -305,7 +308,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="lRh-69-tTQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="infoCell" id="EnZ-8d-RZx">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -323,7 +326,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="More Info" id="O71-Wf-rlr">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="2tX-xs-C1N">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="2tX-xs-C1N">
                             <connections>
                                 <action selector="dismissMoreInfo:" destination="w4c-PW-lHq" id="xkl-TS-OPA"/>
                             </connections>

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         
         // If the app was in geolocation mode, get the latest data
-        if myHeatIndexController?.locationButton.titleLabel?.text != "You’ve Entered Manual Data" {
+        if myHeatIndexController?.locationButton.titleLabel?.text != "You’ve Entered Manual Data" && CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
             myHeatIndexController?.locationActivityIndicator.startAnimating()
             myHeatIndexController?.locManager.startUpdatingLocation()
         }

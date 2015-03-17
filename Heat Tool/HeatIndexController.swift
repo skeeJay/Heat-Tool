@@ -60,7 +60,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         
         // Starter colors for navbar
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
-        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+        self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         
         // Set up toolbar for keyboard
         var doneToolbar: UIToolbar = UIToolbar()
@@ -282,7 +282,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.riskLevel = 0
             riskTitleString = "Minimal Risk From Heat"
             
-            backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0)
+            backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
             buttonColor = UIColor.blackColor()
             labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
         } else {
@@ -328,7 +328,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Set text
             self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
             if self.locationButton.titleLabel?.text == "You’ve Entered Manual Data" {
-                self.locationButton.alpha = buttonColor == UIColor.blackColor() ? 0.2 : 0.5
+                self.locationButton.alpha = buttonColor == UIColor.blackColor() ? 0.3 : 0.6
                 self.nowLabel.text = "Calculated"
                 self.feelsLikeNow.text = "Would Feel Like \(Int(calculatedHeatIndexF))º F"
             } else {
@@ -359,29 +359,50 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // I'm not sure why these aren't being inherited from the view tint
             self.locationButton.setTitleColor(buttonColor, forState: .Normal)
-            self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
-
-            // Disable precautions button for minimal risk state
+            // Disable precautions button if minimal risk state
             if (self.riskLevel == 0) {
                 self.riskButtonNow.enabled = false
-                self.riskButtonNow.alpha = buttonColor == UIColor.blackColor() ? 0.2 : 0.5
+                self.riskButtonNow.setTitleColor(labelColor, forState: .Normal)
             } else {
                 self.riskButtonNow.enabled = true
-                self.riskButtonNow.alpha = 1
+                self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
             }
             
             }, completion: nil)
     }
-
+    
+    // When location button is tapped
     @IBAction func focusLocation(sender: AnyObject) {
-        self.locationActivityIndicator.startAnimating()
-        self.locManager.startUpdatingLocation()
+        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
+            self.locationActivityIndicator.startAnimating()
+            self.locManager.startUpdatingLocation()
+        } else {
+            let alertController = UIAlertController(
+                title: "Background Location Access Disabled",
+                message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
+                preferredStyle: .Alert)
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+            
+            let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+            
+            self.presentViewController(alertController, animated: true, completion: nil)
+
+        }
     }
     
+    // When temperature button is tapped
     @IBAction func focusTemperature(sender: AnyObject) {
         temperatureTextField.becomeFirstResponder()
     }
     
+    // When humidity button is tapped
     @IBAction func focusHumidity(sender: AnyObject) {
         humidityTextField.becomeFirstResponder()
     }
@@ -447,6 +468,17 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 svc.precautionLevel = "precautions_veryhigh"
             default:
                 svc.precautionLevel = "precautions_lower"
+            }
+        }
+        
+        if (segue.identifier == "moreInfoSegue") {
+            var svc = segue.destinationViewController as UINavigationController
+            
+            // Set tint color of the incoming more info navigation controller to match the app state
+            if (self.riskLevel == 0) {
+                svc.navigationBar.tintColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+            } else {
+                svc.navigationBar.tintColor = self.bgView.backgroundColor
             }
         }
     }

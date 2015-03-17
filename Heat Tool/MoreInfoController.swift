@@ -17,6 +17,7 @@ class MoreInfoController: UITableViewController {
         return moreInfoItems.count
     }
     
+    // Init each option in the table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as UITableViewCell
         
@@ -30,10 +31,12 @@ class MoreInfoController: UITableViewController {
         return cell
     }
     
+    // Allow more info view to be closed
     @IBAction func dismissMoreInfo(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    // Load content for the selected web view
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "webViewSegue" {
             if let indexPath = tableView.indexPathForSelectedRow() {
