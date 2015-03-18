@@ -11,14 +11,12 @@ import CoreLocation
 
 class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
     
-//    let newForecast = Weather(lat: "38.893554",long: "-78.015232")
-
-    @IBOutlet weak var temperatureButton: UIButton!
+    var temperatureImageView = UIImageView()
     @IBOutlet weak var temperatureTextField: UITextField!
-    @IBOutlet weak var temperatureLabel: UILabel!
-    @IBOutlet weak var humidityLabel: UILabel!
+    var temperatureLabel = UILabel()
+    var humidityLabel = UILabel()
     
-    @IBOutlet weak var humidityButton: UIButton!
+    var humidityImageView = UIImageView()
     @IBOutlet weak var humidityTextField: UITextField!
     @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var locationActivityIndicator: UIActivityIndicatorView!
@@ -29,7 +27,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     
     @IBOutlet weak var todaysMaxContainer: UIView!
     @IBOutlet weak var todaysMaxLabel: UILabel!
-    @IBOutlet weak var todaysMaxRisk: UILabel!
+    @IBOutlet weak var todaysMaxRisk: UIButton!
     @IBOutlet weak var todaysMaxTime: UILabel!
     
     @IBOutlet var bgView: UIView!
@@ -68,36 +66,37 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         temperatureTextField.layer.cornerRadius = 6.0;
         humidityTextField.layer.cornerRadius = 6.0;
         
-        var temperatureSpacerView = UIView(frame:CGRect(x:0, y:0, width:4, height:4))
-        var humiditySpacerView = UIView(frame:CGRect(x:0, y:0, width:4, height:4))
-        temperatureTextField.leftViewMode = UITextFieldViewMode.Always
-        temperatureTextField.leftView = temperatureSpacerView
-        humidityTextField.leftViewMode = UITextFieldViewMode.Always
-        humidityTextField.leftView = humiditySpacerView
+        var temperatureImageView = UIImageView(image: UIImage(named: "temperature")?.imageWithRenderingMode(.AlwaysTemplate))
+        var humidityImageView = UIImageView(image: UIImage(named: "humidity")?.imageWithRenderingMode(.AlwaysTemplate))
         
-//        temperatureLabel = UILabel(frame: CGRectZero)
-//        temperatureLabel.backgroundColor = UIColor.clearColor()
-//        temperatureLabel.font = UIFont.systemFontOfSize(15)
-//        temperatureLabel.textColor = UIColor.blackColor()
-//        temperatureLabel.alpha = 1
-//        temperatureLabel.text = "°F"
-//        
-//        temperatureLabel.frame = CGRect(x:0, y:0, width:22, height:15)
-//        
-//        temperatureTextField.rightViewMode = UITextFieldViewMode.Always
-//        temperatureTextField.rightView = temperatureLabel
-//        
-//        humidityLabel = UILabel(frame: CGRectZero)
-//        humidityLabel.backgroundColor = UIColor.clearColor()
-//        humidityLabel.font = UIFont.systemFontOfSize(15)
-//        humidityLabel.textColor = UIColor.blackColor()
-//        humidityLabel.alpha = 1
-//        humidityLabel.text = "%"
-//        
-//        humidityLabel.frame = CGRect(x:0, y:0, width:22, height:15)
-//        
-//        humidityTextField.rightViewMode = UITextFieldViewMode.Always
-//        humidityTextField.rightView = humidityLabel
+        temperatureTextField.leftViewMode = UITextFieldViewMode.Always
+        temperatureTextField.leftView = temperatureImageView
+        humidityTextField.leftViewMode = UITextFieldViewMode.Always
+        humidityTextField.leftView = humidityImageView
+        
+        temperatureLabel = UILabel(frame: CGRectZero)
+        temperatureLabel.backgroundColor = UIColor.clearColor()
+        temperatureLabel.font = UIFont.systemFontOfSize(15)
+        temperatureLabel.textColor = UIColor.blackColor()
+        temperatureLabel.alpha = 1
+        temperatureLabel.text = "°F"
+        
+        temperatureLabel.frame = CGRect(x:0, y:0, width:20, height:15)
+        
+        temperatureTextField.rightViewMode = UITextFieldViewMode.Always
+        temperatureTextField.rightView = temperatureLabel
+        
+        humidityLabel = UILabel(frame: CGRectZero)
+        humidityLabel.backgroundColor = UIColor.clearColor()
+        humidityLabel.font = UIFont.systemFontOfSize(15)
+        humidityLabel.textColor = UIColor.blackColor()
+        humidityLabel.alpha = 1
+        humidityLabel.text = "%"
+        
+        humidityLabel.frame = CGRect(x:0, y:0, width:20, height:15)
+        
+        humidityTextField.rightViewMode = UITextFieldViewMode.Always
+        humidityTextField.rightView = humidityLabel
         
         // Set up toolbar for keyboard
         var doneToolbar: UIToolbar = UIToolbar()
@@ -120,16 +119,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         self.temperatureTextField.delegate = self
         self.humidityTextField.delegate = self
         
-        // Move risk button chevron to the right
+        // Center button text
         self.riskButtonNow.titleLabel?.textAlignment = .Center
-        self.riskButtonNow.imageEdgeInsets = UIEdgeInsetsMake(0, 215, 0, 0);
-        self.riskButtonNow.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, 30);
+        self.todaysMaxRisk.titleLabel?.textAlignment = .Center
         
         // Set button images so they always respect tint color
         self.locationButton.setImage(UIImage(named:"geo")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        self.temperatureButton.setImage(UIImage(named:"temperature")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
-        self.humidityButton.setImage(UIImage(named:"humidity")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         self.riskButtonNow.setImage(UIImage(named:"chevron")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
+        self.todaysMaxRisk.setImage(UIImage(named:"chevron")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         
         // Set up location manager for getting our location
         locManager = CLLocationManager()
@@ -155,6 +152,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         temperatures = []
         humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
+//        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=30.129592,&lon=-83.909629&FcstType=digitalDWML")))!
         parser.delegate = self
         parser.parse()
     }
@@ -231,19 +229,19 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Risk won't be greater than minimal for the rest of the day
             if maxIndex == -1 {
-                self.todaysMaxRisk.text = "Minimal Risk From Heat"
+                self.todaysMaxRisk.setTitle("Minimal Risk\nFrom Heat", forState: .Normal)
                 self.todaysMaxTime.text = ""
             // The risk now is the highest for the rest of the day
             } else if maxIndex == 0 {
                 switch maxHeatIndex {
                 case 0..<91:
-                    self.todaysMaxRisk.text = "Lower Risk (Use Caution)"
+                    self.todaysMaxRisk.setTitle("Lower Risk\n(Use Caution)", forState: .Normal)
                 case 91..<104:
-                    self.todaysMaxRisk.text = "Moderate Risk"
+                    self.todaysMaxRisk.setTitle("Moderate Risk", forState: .Normal)
                 case 104..<116:
-                    self.todaysMaxRisk.text = "High\nRisk"
+                    self.todaysMaxRisk.setTitle("High\nRisk", forState: .Normal)
                 case 116..<1000:
-                    self.todaysMaxRisk.text = "Very High To Extreme Risk"
+                    self.todaysMaxRisk.setTitle("Very High To Extreme Risk", forState: .Normal)
                 default:
                     println("default")
                 }
@@ -253,13 +251,13 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             } else {
                 switch maxHeatIndex {
                 case 0..<91:
-                    self.todaysMaxRisk.text = "Lower Risk (Use Caution)"
+                    self.todaysMaxRisk.setTitle("Lower Risk\n(Use Caution)", forState: .Normal)
                 case 91..<104:
-                    self.todaysMaxRisk.text = "Moderate Risk"
+                    self.todaysMaxRisk.setTitle("Moderate Risk", forState: .Normal)
                 case 104..<116:
-                    self.todaysMaxRisk.text = "High\nRisk"
+                    self.todaysMaxRisk.setTitle("High\nRisk", forState: .Normal)
                 case 116..<1000:
-                    self.todaysMaxRisk.text = "Very High To Extreme Risk"
+                    self.todaysMaxRisk.setTitle("Very High To Extreme Risk", forState: .Normal)
                 default:
                     println("default")
                 }
@@ -279,6 +277,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             UIView.animateWithDuration(0.75, delay: 0.0, options: nil, animations: {
                 self.todaysMaxContainer.alpha = 1
+                
+                // Disable precautions button if minimal risk state
+                if (self.todaysMaxRisk.titleLabel?.text == "Minimal Risk\nFrom Heat") {
+                    self.todaysMaxRisk.enabled = false
+                } else {
+                    self.todaysMaxRisk.enabled = true
+                }
+
                 }, completion: nil)
             
             self.locationActivityIndicator.stopAnimating()
@@ -334,7 +340,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor(red: 1.0, green: 0.9, blue: 0.0, alpha: 1.0)
                 buttonColor = UIColor.blackColor()
                 labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
-                disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
+                disabledColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 0.3)
             case 91..<104:
                 self.riskLevel = 2
                 riskTitleString = "Moderate Risk"
@@ -342,7 +348,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor(red: 1.0, green: 0.675, blue: 0.0, alpha: 1.0)
                 buttonColor = UIColor.blackColor()
                 labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
-                disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
+                disabledColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 0.3)
             case 104..<116:
                 self.riskLevel = 3
                 riskTitleString = "High\nRisk"
@@ -350,7 +356,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor.orangeColor()
                 buttonColor = UIColor.whiteColor()
                 labelColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
-                disabledColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
+                disabledColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 0.4)
             case 116..<1000:
                 self.riskLevel = 4
                 riskTitleString = "Very High To Extreme Risk"
@@ -358,7 +364,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor.redColor()
                 buttonColor = UIColor.whiteColor()
                 labelColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
-                disabledColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
+                disabledColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 0.4)
             default:
                 println("default")
             }
@@ -394,17 +400,16 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.nowLabel.textColor = labelColor
             self.feelsLikeNow.textColor = labelColor
             self.todaysMaxLabel.textColor = labelColor
-            self.todaysMaxRisk.textColor = labelColor
             self.todaysMaxTime.textColor = labelColor
             
             // Change button colors
             self.view.tintColor = buttonColor
-            self.temperatureTextField.textColor = buttonColor
-            self.humidityTextField.textColor = buttonColor
             self.navigationController?.navigationBar.tintColor = buttonColor
             self.navigationController?.navigationBar.barStyle = (buttonColor == UIColor.blackColor() ? UIBarStyle.Default : UIBarStyle.Black)
+            self.temperatureTextField.textColor = buttonColor
+            self.humidityTextField.textColor = buttonColor
+            self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
             
-            // I'm not sure why these aren't being inherited from the view tint
             // Disable precautions button if minimal risk state
             if (self.riskLevel == 0) {
                 self.riskButtonNow.enabled = false
@@ -414,6 +419,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 self.riskButtonNow.enabled = true
                 self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
                 self.riskButtonNow.imageView?.alpha = 1
+            }
+            
+            if self.todaysMaxRisk.enabled == true {
+                self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
+                self.todaysMaxRisk.imageView?.alpha = 0
+            } else {
+                self.todaysMaxRisk.setTitleColor(disabledColor, forState: .Normal)
+                self.todaysMaxRisk.imageView?.alpha = 1
             }
             
             }, completion: nil)
@@ -426,7 +439,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.locManager.startUpdatingLocation()
         } else {
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
+                title: "Location Access Disabled",
                 message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
                 preferredStyle: .Alert)
             
@@ -503,7 +516,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
-        if (segue.identifier == "precautionsSegue") {
+        if (segue.identifier == "nowPrecautionsSegue") {
             var svc = segue.destinationViewController as PrecautionsController
             switch riskLevel {
             case 1:
@@ -516,6 +529,24 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 svc.precautionLevel = "precautions_veryhigh"
             default:
                 svc.precautionLevel = "precautions_lower"
+            }
+        }
+        
+        if (segue.identifier == "todaysMaxPrecautionsSegue") {
+            var svc = segue.destinationViewController as PrecautionsController
+            if let text = self.todaysMaxRisk.titleLabel?.text {
+                switch text {
+                case "Lower Risk\n(Use Caution)":
+                    svc.precautionLevel = "precautions_lower"
+                case "Moderate Risk":
+                    svc.precautionLevel = "precautions_moderate"
+                case "High\nRisk":
+                    svc.precautionLevel = "precautions_high"
+                case "Very High To Extreme Risk":
+                    svc.precautionLevel = "precautions_veryhigh"
+                default:
+                    svc.precautionLevel = "precautions_lower"
+                }
             }
         }
         
