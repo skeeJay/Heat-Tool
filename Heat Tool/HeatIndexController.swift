@@ -15,6 +15,9 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
 
     @IBOutlet weak var temperatureButton: UIButton!
     @IBOutlet weak var temperatureTextField: UITextField!
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    
     @IBOutlet weak var humidityButton: UIButton!
     @IBOutlet weak var humidityTextField: UITextField!
     @IBOutlet weak var locationButton: UIButton!
@@ -61,6 +64,40 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Starter colors for navbar
         self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
+        
+        temperatureTextField.layer.cornerRadius = 6.0;
+        humidityTextField.layer.cornerRadius = 6.0;
+        
+        var temperatureSpacerView = UIView(frame:CGRect(x:0, y:0, width:4, height:4))
+        var humiditySpacerView = UIView(frame:CGRect(x:0, y:0, width:4, height:4))
+        temperatureTextField.leftViewMode = UITextFieldViewMode.Always
+        temperatureTextField.leftView = temperatureSpacerView
+        humidityTextField.leftViewMode = UITextFieldViewMode.Always
+        humidityTextField.leftView = humiditySpacerView
+        
+//        temperatureLabel = UILabel(frame: CGRectZero)
+//        temperatureLabel.backgroundColor = UIColor.clearColor()
+//        temperatureLabel.font = UIFont.systemFontOfSize(15)
+//        temperatureLabel.textColor = UIColor.blackColor()
+//        temperatureLabel.alpha = 1
+//        temperatureLabel.text = "°F"
+//        
+//        temperatureLabel.frame = CGRect(x:0, y:0, width:22, height:15)
+//        
+//        temperatureTextField.rightViewMode = UITextFieldViewMode.Always
+//        temperatureTextField.rightView = temperatureLabel
+//        
+//        humidityLabel = UILabel(frame: CGRectZero)
+//        humidityLabel.backgroundColor = UIColor.clearColor()
+//        humidityLabel.font = UIFont.systemFontOfSize(15)
+//        humidityLabel.textColor = UIColor.blackColor()
+//        humidityLabel.alpha = 1
+//        humidityLabel.text = "%"
+//        
+//        humidityLabel.frame = CGRect(x:0, y:0, width:22, height:15)
+//        
+//        humidityTextField.rightViewMode = UITextFieldViewMode.Always
+//        humidityTextField.rightView = humidityLabel
         
         // Set up toolbar for keyboard
         var doneToolbar: UIToolbar = UIToolbar()
@@ -146,7 +183,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
         if elementName == "description" || elementName == "area-description" {
             self.locationButton.setTitle(buffer, forState: .Normal)
-            self.locationButton.alpha = 1
         }
         
         if elementName == "start-valid-time" {
@@ -275,6 +311,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         var backgroundColor = UIColor()
         var buttonColor = UIColor()
         var labelColor = UIColor()
+        var disabledColor = UIColor()
         var riskTitleString = ""
         
         // If the temperature is below 80 degrees, the heat index does not apply.
@@ -285,6 +322,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
             buttonColor = UIColor.blackColor()
             labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
+            disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         } else {
             calculatedHeatIndexF = calculateHeatIndex(tempInF, humidity: humidity)
             
@@ -296,6 +334,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor(red: 1.0, green: 0.9, blue: 0.0, alpha: 1.0)
                 buttonColor = UIColor.blackColor()
                 labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
+                disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
             case 91..<104:
                 self.riskLevel = 2
                 riskTitleString = "Moderate Risk"
@@ -303,6 +342,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor(red: 1.0, green: 0.675, blue: 0.0, alpha: 1.0)
                 buttonColor = UIColor.blackColor()
                 labelColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.3)
+                disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
             case 104..<116:
                 self.riskLevel = 3
                 riskTitleString = "High\nRisk"
@@ -310,6 +350,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor.orangeColor()
                 buttonColor = UIColor.whiteColor()
                 labelColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
+                disabledColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
             case 116..<1000:
                 self.riskLevel = 4
                 riskTitleString = "Very High To Extreme Risk"
@@ -317,6 +358,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 backgroundColor = UIColor.redColor()
                 buttonColor = UIColor.whiteColor()
                 labelColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
+                disabledColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 0.5)
             default:
                 println("default")
             }
@@ -328,10 +370,11 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Set text
             self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
             if self.locationButton.titleLabel?.text == "You’ve Entered Manual Data" {
-                self.locationButton.alpha = buttonColor == UIColor.blackColor() ? 0.3 : 0.6
+                self.locationButton.setTitleColor(disabledColor, forState: .Normal)
                 self.nowLabel.text = "Calculated"
                 self.feelsLikeNow.text = "Would Feel Like \(Int(calculatedHeatIndexF))º F"
             } else {
+                self.locationButton.setTitleColor(buttonColor, forState: .Normal)
                 self.nowLabel.text = "Now"
                 self.feelsLikeNow.text = "Feels Like \(Int(calculatedHeatIndexF))º F"
             }
@@ -343,7 +386,11 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.bgView.backgroundColor = backgroundColor
             self.navigationController?.navigationBar.barTintColor = backgroundColor
             
+            self.locationActivityIndicator.color = buttonColor
+            
             // Change label colors
+            self.temperatureLabel.textColor = labelColor
+            self.humidityLabel.textColor = labelColor
             self.nowLabel.textColor = labelColor
             self.feelsLikeNow.textColor = labelColor
             self.todaysMaxLabel.textColor = labelColor
@@ -358,14 +405,15 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.navigationController?.navigationBar.barStyle = (buttonColor == UIColor.blackColor() ? UIBarStyle.Default : UIBarStyle.Black)
             
             // I'm not sure why these aren't being inherited from the view tint
-            self.locationButton.setTitleColor(buttonColor, forState: .Normal)
             // Disable precautions button if minimal risk state
             if (self.riskLevel == 0) {
                 self.riskButtonNow.enabled = false
-                self.riskButtonNow.setTitleColor(labelColor, forState: .Normal)
+                self.riskButtonNow.setTitleColor(disabledColor, forState: .Normal)
+                self.riskButtonNow.imageView?.alpha = 0
             } else {
                 self.riskButtonNow.enabled = true
                 self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
+                self.riskButtonNow.imageView?.alpha = 1
             }
             
             }, completion: nil)

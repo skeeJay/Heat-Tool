@@ -70,7 +70,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK9-rC-nX8">
-                                <rect key="frame" x="150" y="94" width="300" height="70"/>
+                                <rect key="frame" x="150" y="94" width="300" height="100"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0do-1N-Sfn">
                                         <rect key="frame" x="118" y="4" width="63" height="20"/>
@@ -87,7 +87,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xy6-hC-ApI">
-                                        <rect key="frame" x="165" y="36" width="30" height="30"/>
+                                        <rect key="frame" x="168" y="32" width="28" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="humidity.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -96,26 +96,36 @@
                                             <action selector="focusHumidity:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KiE-l0-eYk"/>
                                         </connections>
                                     </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-iV-Xfk">
-                                        <rect key="frame" x="100" y="36" width="40" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="--" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-iV-Xfk">
+                                        <rect key="frame" x="103" y="32" width="23" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="NSf-8K-7RR"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="NSf-8K-7RR"/>
+                                            </mask>
+                                        </variation>
                                     </textField>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Fc-qWx">
-                                        <rect key="frame" x="195" y="36" width="40" height="30"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="--" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Fc-qWx">
+                                        <rect key="frame" x="197" y="32" width="23" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="41c-Aa-vRl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="41c-Aa-vRl"/>
+                                            </mask>
+                                        </variation>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Lp-S0-Jxh">
-                                        <rect key="frame" x="75" y="36" width="25" height="30"/>
+                                        <rect key="frame" x="80" y="32" width="22" height="30"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <state key="normal" image="temperature.png">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -127,26 +137,46 @@
                                     <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v1U-Op-Exk">
                                         <rect key="frame" x="189" y="4" width="20" height="20"/>
                                     </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="°F" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e90-ma-6bO">
+                                        <rect key="frame" x="127" y="38" width="15" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Feq-WJ-RQx">
+                                        <rect key="frame" x="221" y="38" width="16" height="18"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="centerX" secondItem="0do-1N-Sfn" secondAttribute="centerX" id="0VT-Jo-MmF"/>
                                     <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerX" secondItem="0do-1N-Sfn" secondAttribute="centerX" constant="-30" id="2xH-5A-IIG"/>
-                                    <constraint firstAttribute="centerX" secondItem="P6b-iV-Xfk" secondAttribute="centerX" constant="30" id="7V3-bM-auU"/>
+                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="top" secondItem="v1U-Op-Exk" secondAttribute="bottom" constant="2" id="5It-ab-7Z2"/>
+                                    <constraint firstAttribute="centerX" secondItem="P6b-iV-Xfk" secondAttribute="centerX" constant="36" id="7V3-bM-auU"/>
                                     <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerY" secondItem="6Lp-S0-Jxh" secondAttribute="centerY" id="7ho-0g-ucq"/>
-                                    <constraint firstAttribute="centerX" secondItem="xy6-hC-ApI" secondAttribute="centerX" constant="-30" id="ARv-Yk-Gez"/>
-                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="leading" secondItem="6Lp-S0-Jxh" secondAttribute="trailing" id="Jnm-ef-8F7"/>
+                                    <constraint firstAttribute="centerX" secondItem="xy6-hC-ApI" secondAttribute="centerX" constant="-28" id="ARv-Yk-Gez"/>
+                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerY" secondItem="JOu-Fc-qWx" secondAttribute="centerY" id="CkZ-cO-1iI"/>
+                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="top" secondItem="0do-1N-Sfn" secondAttribute="bottom" constant="8" id="INO-OI-IFh"/>
+                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="leading" secondItem="6Lp-S0-Jxh" secondAttribute="trailing" constant="1" id="Jnm-ef-8F7"/>
+                                    <constraint firstAttribute="centerX" secondItem="JOu-Fc-qWx" secondAttribute="centerX" constant="-58.5" id="Lni-l3-gPp"/>
+                                    <constraint firstItem="e90-ma-6bO" firstAttribute="leading" secondItem="P6b-iV-Xfk" secondAttribute="trailing" constant="1" id="LtZ-5w-TqU"/>
                                     <constraint firstItem="v1U-Op-Exk" firstAttribute="leading" secondItem="0do-1N-Sfn" secondAttribute="trailing" constant="8" symbolic="YES" id="MlK-B1-eEB"/>
                                     <constraint firstItem="JOu-Fc-qWx" firstAttribute="centerY" secondItem="xy6-hC-ApI" secondAttribute="centerY" id="Q05-94-kbC"/>
+                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="centerY" secondItem="Feq-WJ-RQx" secondAttribute="centerY" id="S9E-Fc-k98"/>
                                     <constraint firstAttribute="width" constant="300" id="ToO-A4-rg7"/>
                                     <constraint firstItem="6Lp-S0-Jxh" firstAttribute="top" secondItem="xy6-hC-ApI" secondAttribute="bottom" constant="4" id="Vv2-OD-SnE"/>
                                     <constraint firstAttribute="bottom" secondItem="6Lp-S0-Jxh" secondAttribute="bottom" constant="4" id="WQe-nw-Cv0"/>
+                                    <constraint firstItem="Feq-WJ-RQx" firstAttribute="leading" secondItem="JOu-Fc-qWx" secondAttribute="trailing" constant="1" id="cqY-lg-vuN"/>
                                     <constraint firstItem="v1U-Op-Exk" firstAttribute="centerY" secondItem="0do-1N-Sfn" secondAttribute="centerY" id="d2X-ky-uft"/>
                                     <constraint firstItem="6Lp-S0-Jxh" firstAttribute="leading" secondItem="P6b-iV-Xfk" secondAttribute="trailing" constant="8" symbolic="YES" id="pKo-yr-nFs"/>
+                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerY" secondItem="e90-ma-6bO" secondAttribute="centerY" id="px7-E9-IkY"/>
                                     <constraint firstAttribute="bottom" secondItem="xy6-hC-ApI" secondAttribute="bottom" constant="4" id="qKc-f4-Fjh"/>
-                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="leading" secondItem="xy6-hC-ApI" secondAttribute="trailing" id="rTL-Pr-O9A"/>
+                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="leading" secondItem="xy6-hC-ApI" secondAttribute="trailing" constant="1" id="rTL-Pr-O9A"/>
                                     <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerY" secondItem="6Lp-S0-Jxh" secondAttribute="centerY" id="tJ1-BH-BLW"/>
                                     <constraint firstAttribute="centerX" secondItem="6Lp-S0-Jxh" secondAttribute="centerX" constant="42" id="tsr-VT-hc2"/>
-                                    <constraint firstAttribute="height" constant="70" id="wVr-Kb-mGQ"/>
+                                    <constraint firstAttribute="height" constant="100" id="wVr-Kb-mGQ"/>
                                     <constraint firstItem="0do-1N-Sfn" firstAttribute="top" secondItem="pK9-rC-nX8" secondAttribute="top" constant="4" id="wvl-lc-D5e"/>
                                     <constraint firstAttribute="bottom" secondItem="P6b-iV-Xfk" secondAttribute="bottom" constant="4" id="xU1-ax-N57"/>
                                 </constraints>
@@ -158,6 +188,10 @@
                                         <exclude reference="tsr-VT-hc2"/>
                                         <exclude reference="2xH-5A-IIG"/>
                                         <exclude reference="tJ1-BH-BLW"/>
+                                        <exclude reference="xU1-ax-N57"/>
+                                        <exclude reference="ARv-Yk-Gez"/>
+                                        <exclude reference="qKc-f4-Fjh"/>
+                                        <exclude reference="5It-ab-7Z2"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -241,6 +275,7 @@
                         <outlet property="containerView" destination="pK9-rC-nX8" id="O1D-R6-G5o"/>
                         <outlet property="feelsLikeNow" destination="YbO-MY-bxl" id="8Oe-2x-YAc"/>
                         <outlet property="humidityButton" destination="xy6-hC-ApI" id="BsY-Bh-Uc3"/>
+                        <outlet property="humidityLabel" destination="Feq-WJ-RQx" id="hta-TC-m35"/>
                         <outlet property="humidityTextField" destination="JOu-Fc-qWx" id="77J-E5-1nL"/>
                         <outlet property="locationActivityIndicator" destination="v1U-Op-Exk" id="fjE-PP-V4k"/>
                         <outlet property="locationButton" destination="0do-1N-Sfn" id="YWM-Zn-UAX"/>
@@ -248,6 +283,7 @@
                         <outlet property="riskButtonNow" destination="4wG-r6-Yyj" id="QNj-e8-3rL"/>
                         <outlet property="searchDisplayController" destination="Fra-f1-6t8" id="918-jt-Y4G"/>
                         <outlet property="temperatureButton" destination="6Lp-S0-Jxh" id="pEa-Gp-vG4"/>
+                        <outlet property="temperatureLabel" destination="e90-ma-6bO" id="ZjZ-AT-4Ip"/>
                         <outlet property="temperatureTextField" destination="P6b-iV-Xfk" id="iyb-5E-IC2"/>
                         <outlet property="todaysMaxContainer" destination="lAj-b5-MTe" id="wbW-c5-oj6"/>
                         <outlet property="todaysMaxLabel" destination="wpU-lh-aUv" id="BBz-24-qdy"/>
@@ -391,9 +427,9 @@
         <image name="US-OSHA-Logo.svg.png" width="62" height="18"/>
         <image name="chevron.png" width="30" height="30"/>
         <image name="geo.png" width="30" height="20"/>
-        <image name="humidity.png" width="30" height="30"/>
+        <image name="humidity.png" width="28" height="30"/>
         <image name="sTlUYgPo.png" width="45" height="45"/>
-        <image name="temperature.png" width="25" height="30"/>
+        <image name="temperature.png" width="22" height="30"/>
     </resources>
     <color key="tintColor" white="0.59999999999999998" alpha="1" colorSpace="calibratedWhite"/>
 </document>
