@@ -213,16 +213,29 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             var maxIndex = -1
             var maxTime:String = ""
             var maxHeatIndex = -1000.0
-            for index in 0...11 {
-                println("Hour \(index): Temp: \(temperatures[index]), Humidity: \(humidities[index])")
+            for index in 0...23 {
+                var newTime = (times[index] as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                
+                let newDateFormatter = NSDateFormatter()
+                newDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
+                let newDate = newDateFormatter.dateFromString(newTime)
+                newDateFormatter.dateFormat = "h:mm a"
+                var newHour = newDateFormatter.stringFromDate(newDate!)
+                
+                if newHour == "12:00 AM" {
+                    break
+                }
                 
                 var newTempDouble = (temperatures[index] as NSString).doubleValue
                 var newHumidityDouble = (humidities[index] as NSString).doubleValue
                 var newHeatIndex = calculateHeatIndex(newTempDouble, humidity: newHumidityDouble)
+                
+                println("Hour \(index): Time: \(newHour) Temp: \(temperatures[index]), Humidity: \(humidities[index])")
+
                 if newTempDouble > 80.0 && newHeatIndex > maxHeatIndex {
                     maxIndex = index
                     maxHeatIndex = newHeatIndex
-                    maxTime = (times[index] as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    maxTime = newTime
                 }
             }
             println("Max \(maxIndex): Heat: \(maxHeatIndex)")
@@ -408,7 +421,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.navigationController?.navigationBar.barStyle = (buttonColor == UIColor.blackColor() ? UIBarStyle.Default : UIBarStyle.Black)
             self.temperatureTextField.textColor = buttonColor
             self.humidityTextField.textColor = buttonColor
-            self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
             
             // Disable precautions button if minimal risk state
             if (self.riskLevel == 0) {
@@ -421,11 +433,11 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 self.riskButtonNow.imageView?.alpha = 1
             }
             
-            if self.todaysMaxRisk.enabled == true {
-                self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
+            if self.todaysMaxRisk.enabled == false {
+                self.todaysMaxRisk.setTitleColor(disabledColor, forState: .Normal)
                 self.todaysMaxRisk.imageView?.alpha = 0
             } else {
-                self.todaysMaxRisk.setTitleColor(disabledColor, forState: .Normal)
+                self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
                 self.todaysMaxRisk.imageView?.alpha = 1
             }
             
