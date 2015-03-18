@@ -33,7 +33,6 @@
 		835E84EF1AAF632C00D9C71D /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835E84EE1AAF632C00D9C71D /* CoreData.framework */; };
 		835E84F11AAF633F00D9C71D /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 835E84F01AAF633F00D9C71D /* SystemConfiguration.framework */; };
 		835E84F31AAF635600D9C71D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835E84F21AAF635600D9C71D /* libz.dylib */; };
-		835E84FB1AAF6D2F00D9C71D /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 835E84FA1AAF6D2F00D9C71D /* libGoogleAnalyticsServices.a */; };
 		8386109E1A93E37D000A1904 /* PrecautionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386109D1A93E37D000A1904 /* PrecautionsController.swift */; };
 		838610A51A941350000A1904 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831D9A951A8EB30800B4EB56 /* CoreLocation.framework */; };
 		83AFB0711AB9BED7002116FA /* humidity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFB06F1AB9BED7002116FA /* humidity@2x.png */; };
@@ -48,6 +47,7 @@
 		83E111411A72FFA6007DE234 /* moreinfo_signs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */; };
 		83E9C2AF1A95024800BE4019 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E9C2AE1A95024800BE4019 /* chevron@2x.png */; };
 		83E9C2B51A952BFB00BE4019 /* location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83E9C2B11A952BFB00BE4019 /* location@2x.png */; };
+		83EACABF1ABA064A0009A2BA /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 83EACABE1ABA064A0009A2BA /* libGoogleAnalyticsServices.a */; };
 		83F96FC11A9CDDF000C7812C /* geo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F96FBF1A9CDDF000C7812C /* geo@2x.png */; };
 		83FDDFDA1A66C9470018A068 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDDFD91A66C9470018A068 /* AppDelegate.swift */; };
 		83FDDFDC1A66C9470018A068 /* HeatIndexController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83FDDFDB1A66C9470018A068 /* HeatIndexController.swift */; };
@@ -114,7 +114,6 @@
 		835E84F01AAF633F00D9C71D /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		835E84F21AAF635600D9C71D /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		835E84F71AAF64FD00D9C71D /* Heat Tool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Heat Tool-Bridging-Header.h"; sourceTree = "<group>"; };
-		835E84FA1AAF6D2F00D9C71D /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libGoogleAnalyticsServices.a; path = ../../Downloads/GoogleAnalyticsServicesiOS_3.10/libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		8386109D1A93E37D000A1904 /* PrecautionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecautionsController.swift; sourceTree = "<group>"; };
 		838610A31A9411B0000A1904 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		83AFB06F1AB9BED7002116FA /* humidity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "humidity@2x.png"; sourceTree = "<group>"; };
@@ -131,6 +130,7 @@
 		83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_signs@2x.png"; sourceTree = "<group>"; };
 		83E9C2AE1A95024800BE4019 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron@2x.png"; sourceTree = "<group>"; };
 		83E9C2B11A952BFB00BE4019 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
+		83EACABE1ABA064A0009A2BA /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
 		83F96FBF1A9CDDF000C7812C /* geo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geo@2x.png"; sourceTree = "<group>"; };
 		83FDDFD41A66C9470018A068 /* Heat Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heat Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FDDFD81A66C9470018A068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -150,10 +150,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				835E84FB1AAF6D2F00D9C71D /* libGoogleAnalyticsServices.a in Frameworks */,
 				835E84F31AAF635600D9C71D /* libz.dylib in Frameworks */,
 				835E84F11AAF633F00D9C71D /* SystemConfiguration.framework in Frameworks */,
 				835E84EF1AAF632C00D9C71D /* CoreData.framework in Frameworks */,
+				83EACABF1ABA064A0009A2BA /* libGoogleAnalyticsServices.a in Frameworks */,
 				838610A51A941350000A1904 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -232,7 +232,7 @@
 		83FDDFCB1A66C9470018A068 = {
 			isa = PBXGroup;
 			children = (
-				835E84FA1AAF6D2F00D9C71D /* libGoogleAnalyticsServices.a */,
+				83EACABE1ABA064A0009A2BA /* libGoogleAnalyticsServices.a */,
 				835E84F21AAF635600D9C71D /* libz.dylib */,
 				835E84F01AAF633F00D9C71D /* SystemConfiguration.framework */,
 				835E84EE1AAF632C00D9C71D /* CoreData.framework */,
@@ -676,6 +676,7 @@
 					"$(PROJECT_DIR)/Heat",
 					Tool/GoogleAnalyticsServicesiOS_3.10,
 					/Users/ejkalafarski/Downloads/GoogleAnalyticsServicesiOS_3.10,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Heat Tool-Bridging-Header.h";
@@ -696,6 +697,7 @@
 					"$(PROJECT_DIR)/Heat",
 					Tool/GoogleAnalyticsServicesiOS_3.10,
 					/Users/ejkalafarski/Downloads/GoogleAnalyticsServicesiOS_3.10,
+					"$(PROJECT_DIR)",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "Heat Tool-Bridging-Header.h";
