@@ -74,22 +74,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pK9-rC-nX8">
                                 <rect key="frame" x="150" y="94" width="300" height="100"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0do-1N-Sfn">
-                                        <rect key="frame" x="118" y="4" width="63" height="20"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="300" id="hWU-Hc-y9Q"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <state key="normal" title="--, --" image="geo.png">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="focusLocation:" destination="BYZ-38-t0r" eventType="touchUpInside" id="SeO-Zh-2S5"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="—" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-iV-Xfk">
-                                        <rect key="frame" x="119" y="32" width="28" height="36"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="—" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-iV-Xfk">
+                                        <rect key="frame" x="119" y="38" width="28" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="HOa-S5-iHH"/>
@@ -103,11 +89,8 @@
                                             </mask>
                                         </variation>
                                     </textField>
-                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v1U-Op-Exk">
-                                        <rect key="frame" x="189" y="4" width="20" height="20"/>
-                                    </activityIndicatorView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="—" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Fc-qWx">
-                                        <rect key="frame" x="153" y="32" width="28" height="36"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="—" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JOu-Fc-qWx">
+                                        <rect key="frame" x="153" y="38" width="28" height="36"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="36" id="3Sk-c0-iU4"/>
@@ -121,31 +104,52 @@
                                             </mask>
                                         </variation>
                                     </textField>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manual Data" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3MA-b7-shL">
+                                        <rect key="frame" x="43" y="4" width="215" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="Bfg-sX-H3A"/>
+                                            <constraint firstAttribute="height" constant="24" id="WYN-Tu-UtB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="Bfg-sX-H3A"/>
+                                                <exclude reference="WYN-Tu-UtB"/>
+                                            </mask>
+                                        </variation>
+                                    </textField>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="v1U-Op-Exk">
+                                        <rect key="frame" x="262" y="9" width="20" height="20"/>
+                                    </activityIndicatorView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="0do-1N-Sfn" secondAttribute="centerX" id="0VT-Jo-MmF"/>
-                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerX" secondItem="0do-1N-Sfn" secondAttribute="centerX" constant="-30" id="2xH-5A-IIG"/>
                                     <constraint firstItem="JOu-Fc-qWx" firstAttribute="top" secondItem="v1U-Op-Exk" secondAttribute="bottom" constant="2" id="5It-ab-7Z2"/>
                                     <constraint firstAttribute="centerX" secondItem="P6b-iV-Xfk" secondAttribute="centerX" constant="42" id="7V3-bM-auU"/>
                                     <constraint firstItem="JOu-Fc-qWx" firstAttribute="leading" secondItem="pK9-rC-nX8" secondAttribute="leading" constant="153" id="C1q-66-0hU"/>
                                     <constraint firstItem="P6b-iV-Xfk" firstAttribute="centerY" secondItem="JOu-Fc-qWx" secondAttribute="centerY" id="CkZ-cO-1iI"/>
-                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="top" secondItem="0do-1N-Sfn" secondAttribute="bottom" constant="8" id="INO-OI-IFh"/>
+                                    <constraint firstItem="P6b-iV-Xfk" firstAttribute="top" secondItem="3MA-b7-shL" secondAttribute="bottom" constant="4" id="DhS-sd-eJ2"/>
+                                    <constraint firstAttribute="centerX" secondItem="3MA-b7-shL" secondAttribute="centerX" id="KwP-Aa-HlU"/>
                                     <constraint firstAttribute="centerX" secondItem="JOu-Fc-qWx" secondAttribute="centerX" constant="-47" id="Lni-l3-gPp"/>
-                                    <constraint firstItem="v1U-Op-Exk" firstAttribute="leading" secondItem="0do-1N-Sfn" secondAttribute="trailing" constant="8" symbolic="YES" id="MlK-B1-eEB"/>
+                                    <constraint firstItem="v1U-Op-Exk" firstAttribute="centerY" secondItem="3MA-b7-shL" secondAttribute="centerY" id="R5j-OU-FBi"/>
                                     <constraint firstAttribute="width" constant="300" id="ToO-A4-rg7"/>
+                                    <constraint firstItem="3MA-b7-shL" firstAttribute="top" secondItem="pK9-rC-nX8" secondAttribute="top" constant="4" id="UMy-f1-BiE"/>
+                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="centerY" secondItem="P6b-iV-Xfk" secondAttribute="centerY" id="VNe-Vo-b5Z"/>
+                                    <constraint firstItem="v1U-Op-Exk" firstAttribute="leading" secondItem="3MA-b7-shL" secondAttribute="trailing" constant="4" id="X5I-Vn-xH2"/>
+                                    <constraint firstItem="JOu-Fc-qWx" firstAttribute="top" secondItem="3MA-b7-shL" secondAttribute="bottom" constant="4" id="blV-qd-Jsy"/>
                                     <constraint firstAttribute="trailing" secondItem="P6b-iV-Xfk" secondAttribute="trailing" constant="153" id="cgO-Qw-wd6"/>
-                                    <constraint firstItem="v1U-Op-Exk" firstAttribute="centerY" secondItem="0do-1N-Sfn" secondAttribute="centerY" id="d2X-ky-uft"/>
                                     <constraint firstAttribute="height" constant="100" id="wVr-Kb-mGQ"/>
-                                    <constraint firstItem="0do-1N-Sfn" firstAttribute="top" secondItem="pK9-rC-nX8" secondAttribute="top" constant="4" id="wvl-lc-D5e"/>
                                     <constraint firstAttribute="bottom" secondItem="P6b-iV-Xfk" secondAttribute="bottom" constant="4" id="xU1-ax-N57"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="2xH-5A-IIG"/>
                                         <exclude reference="7V3-bM-auU"/>
+                                        <exclude reference="CkZ-cO-1iI"/>
                                         <exclude reference="xU1-ax-N57"/>
                                         <exclude reference="5It-ab-7Z2"/>
                                         <exclude reference="Lni-l3-gPp"/>
+                                        <exclude reference="blV-qd-Jsy"/>
                                     </mask>
                                 </variation>
                             </view>
@@ -253,7 +257,7 @@
                         <outlet property="feelsLikeNow" destination="YbO-MY-bxl" id="8Oe-2x-YAc"/>
                         <outlet property="humidityTextField" destination="JOu-Fc-qWx" id="77J-E5-1nL"/>
                         <outlet property="locationActivityIndicator" destination="v1U-Op-Exk" id="fjE-PP-V4k"/>
-                        <outlet property="locationButton" destination="0do-1N-Sfn" id="YWM-Zn-UAX"/>
+                        <outlet property="locationTextField" destination="3MA-b7-shL" id="sQQ-hB-g8Y"/>
                         <outlet property="nowLabel" destination="Wan-YT-Oua" id="Tjk-0O-WWa"/>
                         <outlet property="riskButtonNow" destination="4wG-r6-Yyj" id="QNj-e8-3rL"/>
                         <outlet property="searchDisplayController" destination="Fra-f1-6t8" id="918-jt-Y4G"/>
@@ -399,7 +403,6 @@
     <resources>
         <image name="US-OSHA-Logo.svg.png" width="62" height="18"/>
         <image name="chevron.png" width="30" height="30"/>
-        <image name="geo.png" width="30" height="20"/>
         <image name="sTlUYgPo.png" width="45" height="45"/>
     </resources>
     <inferredMetricsTieBreakers>

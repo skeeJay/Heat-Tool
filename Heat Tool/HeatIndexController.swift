@@ -11,6 +11,9 @@ import CoreLocation
 
 class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, NSXMLParserDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var locationTextField: UITextField!
+    var locationImageView = UIImageView()
+    
     var temperatureImageView = UIImageView()
     @IBOutlet weak var temperatureTextField: UITextField!
     var temperatureLabel = UILabel()
@@ -18,7 +21,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     
     var humidityImageView = UIImageView()
     @IBOutlet weak var humidityTextField: UITextField!
-    @IBOutlet weak var locationButton: UIButton!
     @IBOutlet weak var locationActivityIndicator: UIActivityIndicatorView!
     
     @IBOutlet weak var nowLabel: UILabel!
@@ -68,11 +70,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         
         var temperatureImageView = UIImageView(image: UIImage(named: "temperature")?.imageWithRenderingMode(.AlwaysTemplate))
         var humidityImageView = UIImageView(image: UIImage(named: "humidity")?.imageWithRenderingMode(.AlwaysTemplate))
+        var locationImageView = UIImageView(image: UIImage(named: "geo")?.imageWithRenderingMode(.AlwaysTemplate))
         
         temperatureTextField.leftViewMode = UITextFieldViewMode.Always
         temperatureTextField.leftView = temperatureImageView
         humidityTextField.leftViewMode = UITextFieldViewMode.Always
         humidityTextField.leftView = humidityImageView
+        locationTextField.leftViewMode = UITextFieldViewMode.Always
+        locationTextField.leftView = locationImageView
         
         temperatureLabel = UILabel(frame: CGRectZero)
         temperatureLabel.backgroundColor = UIColor.clearColor()
@@ -118,13 +123,13 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Set up text input field handlers
         self.temperatureTextField.delegate = self
         self.humidityTextField.delegate = self
+        self.locationTextField.delegate = self
         
         // Center button text
         self.riskButtonNow.titleLabel?.textAlignment = .Center
         self.todaysMaxRisk.titleLabel?.textAlignment = .Center
         
         // Set button images so they always respect tint color
-        self.locationButton.setImage(UIImage(named:"geo")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         self.riskButtonNow.setImage(UIImage(named:"chevron")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         self.todaysMaxRisk.setImage(UIImage(named:"chevron")?.imageWithRenderingMode(.AlwaysTemplate), forState: .Normal)
         
@@ -180,7 +185,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     
     func parser(parser: NSXMLParser!, didEndElement elementName: String!, namespaceURI: String!, qualifiedName qName: String!) {
         if elementName == "description" || elementName == "area-description" {
-            self.locationButton.setTitle(buffer, forState: .Normal)
+            self.locationTextField.text = buffer
         }
         
         if elementName == "start-valid-time" {
@@ -388,12 +393,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Set text
             self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
-            if self.locationButton.titleLabel?.text == "You’ve Entered Manual Data" {
-                self.locationButton.setTitleColor(disabledColor, forState: .Normal)
+            if self.locationTextField.text == "" {
                 self.nowLabel.text = "Calculated"
                 self.feelsLikeNow.text = "Would Feel Like \(Int(calculatedHeatIndexF))º F"
             } else {
-                self.locationButton.setTitleColor(buttonColor, forState: .Normal)
                 self.nowLabel.text = "Now"
                 self.feelsLikeNow.text = "Feels Like \(Int(calculatedHeatIndexF))º F"
             }
@@ -419,6 +422,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.view.tintColor = buttonColor
             self.navigationController?.navigationBar.tintColor = buttonColor
             self.navigationController?.navigationBar.barStyle = (buttonColor == UIColor.blackColor() ? UIBarStyle.Default : UIBarStyle.Black)
+            self.locationTextField.textColor = buttonColor
             self.temperatureTextField.textColor = buttonColor
             self.humidityTextField.textColor = buttonColor
             
@@ -444,40 +448,36 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             }, completion: nil)
     }
     
-    // When location button is tapped
-    @IBAction func focusLocation(sender: AnyObject) {
-        if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
-            self.locationActivityIndicator.startAnimating()
-            self.locManager.startUpdatingLocation()
-        } else {
-            let alertController = UIAlertController(
-                title: "Location Access Disabled",
-                message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
-                preferredStyle: .Alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
+    func textFieldShouldBeginEditing(textField: UITextField) -> Bool {
+        // When location field is tapped
+        if textField == locationTextField {
+            if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
+                self.locationActivityIndicator.startAnimating()
+                self.locManager.startUpdatingLocation()
+            } else {
+                let alertController = UIAlertController(
+                    title: "Location Access Disabled",
+                    message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
+                    preferredStyle: .Alert)
+                
+                let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
+                
+                let openAction = UIAlertAction(title: "Settings", style: .Default) { (action) in
+                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
                 }
+                alertController.addAction(openAction)
+                
+                self.presentViewController(alertController, animated: true, completion: nil)
+                
             }
-            alertController.addAction(openAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
 
+            return false
+        } else {
+            return true
         }
-    }
-    
-    // When temperature button is tapped
-    @IBAction func focusTemperature(sender: AnyObject) {
-        temperatureTextField.becomeFirstResponder()
-    }
-    
-    // When humidity button is tapped
-    @IBAction func focusHumidity(sender: AnyObject) {
-        humidityTextField.becomeFirstResponder()
     }
     
     func textFieldShouldReturn(sender: AnyObject) {
@@ -498,7 +498,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.humidityTextField.text = "0"
         }
         
-        self.locationButton.setTitle("You’ve Entered Manual Data", forState: .Normal)
+        self.locationTextField.text = ""
         
         // Change backgrounds of text fields to show they're in "manual" mode
         self.temperatureTextField.backgroundColor = UIColor(red: 0.1, green: 0.1, blue: 0.1, alpha: 0.1)
