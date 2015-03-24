@@ -9,10 +9,10 @@
 "6va-OD-rCb.text" = "Around 3:00 PM";
 
 /* Class = "IBUINavigationItem"; title = "Precautions"; ObjectID = "BU0-3k-GCJ"; */
-"BU0-3k-GCJ.title" = "Precautions";
+"BU0-3k-GCJ.title" = "Precauciones";
 
 /* Class = "IBUINavigationItem"; title = "More Info"; ObjectID = "O71-Wf-rlr"; */
-"O71-Wf-rlr.title" = "More Info";
+"O71-Wf-rlr.title" = "Más Info";
 
 /* Class = "IBUILabel"; text = "Now"; ObjectID = "Wan-YT-Oua"; */
 "Wan-YT-Oua.text" = "Now";
@@ -21,7 +21,7 @@
 "YbO-MY-bxl.text" = "Feels Like --º F";
 
 /* Class = "IBUINavigationItem"; title = "Heat Index"; ObjectID = "l2i-F2-GRk"; */
-"l2i-F2-GRk.title" = "Heat Index";
+"l2i-F2-GRk.title" = "Índice de Calor";
 
 /* Class = "IBUILabel"; text = "Very High To Extreme Risk"; ObjectID = "s5z-8M-8JI"; */
 "s5z-8M-8JI.text" = "Very High To Extreme Risk";
