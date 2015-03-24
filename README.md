@@ -6,6 +6,7 @@ Rebuild and redesign of the OSHA Heat Safety Tool in Swift.
 Category | Action | Label
 ------------ | ------------- | -------------
 location-field | tap | get-current-conditions
+location-field | tap | location-services-disabled-alert
 app | open-app | get-current-conditions
 app | bring-app-to-foreground | get-current-conditions
 keyboard | set | calculate-entered-conditions
