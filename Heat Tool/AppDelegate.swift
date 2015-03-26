@@ -41,8 +41,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillEnterForeground(application: UIApplication) {
         // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         
-        // If the app was in geolocation mode, get the latest data
+        // If the app was in geolocation mode
         if myHeatIndexController?.locationTextField.text != "" && CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
+            // Record GA event
+            var tracker = GAI.sharedInstance().defaultTracker
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("app", action: "bring-app-to-foreground", label: "get-current-conditions", value: nil).build())
+            
+            // Get the latest data
             myHeatIndexController?.locationActivityIndicator.startAnimating()
             myHeatIndexController?.locManager.startUpdatingLocation()
         }

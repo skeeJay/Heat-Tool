@@ -137,22 +137,28 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     // Update state with the user's location on load
     func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
+            // Record GA event
+            var tracker = GAI.sharedInstance().defaultTracker
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("app", action: "open-app", label: "get-current-conditions", value: nil).build())
+            
+            // Get current conditions
             self.locationActivityIndicator.startAnimating()
             manager.startUpdatingLocation()
         }
     }
     
+    // When the user's location is available
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
         locManager.stopUpdatingLocation()
         
-        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
+//        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
         
         // Request and parse NOAA API with current coordinates
         times = []
         temperatures = []
         humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
-//        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=28.094902,&lon=-82.657187&FcstType=digitalDWML")))!
+//        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.347649&lon=-80.899375&FcstType=digitalDWML")))!
         parser.delegate = self
         parser.parse()
     }
@@ -216,11 +222,12 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Geolocation and parsing are complete
             self.locationActivityIndicator.stopAnimating()
             
+            // Update today's max risk from fetched hourly values
+            // Today's max should be calculated before overall risk level, so that app state styling from overall risk can take it into account
+            self.updateTodaysMaxRiskLevel()
+
             // Update main risk from text field values
             self.updateRiskLevel()
-            
-            // Update today's max risk from fetched hourly values
-            self.updateTodaysMaxRiskLevel()
         }
     }
     
@@ -458,10 +465,19 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         if textField == locationTextField {
             // If location settings allow, start to get current conditions
             if CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
+                // Record GA event
+                var tracker = GAI.sharedInstance().defaultTracker
+                tracker.send(GAIDictionaryBuilder.createEventWithCategory("location-field", action: "tap", label: "get-current-conditions", value: nil).build())
+                
+                // Get current conditions
                 self.locationActivityIndicator.startAnimating()
                 self.locManager.startUpdatingLocation()
             // If location settings don't allow, display an alert
             } else {
+                // Record GA event
+                var tracker = GAI.sharedInstance().defaultTracker
+                tracker.send(GAIDictionaryBuilder.createEventWithCategory("location-field", action: "tap", label: "location-services-disabled-alert", value: nil).build())
+
                 let alertController = UIAlertController(
                     title: "Location Services Disabled",
                     message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
@@ -489,15 +505,12 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         }
     }
     
-    // Without a return button on the keyboard, I don't think this is ever called
-//    func textFieldShouldReturn(sender: AnyObject) {
-//        sender.resignFirstResponder()
-//        
-//        updateRiskLevel()
-//    }
-    
     // When the done button on the keyboard toolbar is tapped
     func doneButtonAction() {
+        // Record GA event
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.send(GAIDictionaryBuilder.createEventWithCategory("keyboard", action: "set", label: "calculate-entered-conditions", value: nil).build())
+
         self.temperatureTextField.endEditing(true)
         self.humidityTextField.endEditing(true)
         
@@ -529,11 +542,22 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Dispose of any resources that can be recreated.
     }
     
+    // Tapping OSHA logo opens the OSHA website in Safari
     @IBAction func openOSHAWebsite(sender: AnyObject) {
+        // Record GA event
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.send(GAIDictionaryBuilder.createEventWithCategory("osha-logo", action: "tap", label: "open-osha-website", value: nil).build())
+
+        // Open website
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.osha.gov")!)
     }
     
     @IBAction func openDOLWebsite(sender: AnyObject) {
+        // Record GA event
+        var tracker = GAI.sharedInstance().defaultTracker
+        tracker.send(GAIDictionaryBuilder.createEventWithCategory("dol-logo", action: "tap", label: "open-dol-website", value: nil).build())
+        
+        // Open website
         UIApplication.sharedApplication().openURL(NSURL(string: "http://www.dol.gov")!)
     }
     
@@ -541,6 +565,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
         if (segue.identifier == "nowPrecautionsSegue") {
+            // Record GA event
+            var tracker = GAI.sharedInstance().defaultTracker
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("now-risk", action: "tap", label: "open-precautions", value: nil).build())
+
             var svc = segue.destinationViewController as PrecautionsController
             switch riskLevel {
             case 1:
@@ -557,6 +585,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         }
         
         if (segue.identifier == "todaysMaxPrecautionsSegue") {
+            // Record GA event
+            var tracker = GAI.sharedInstance().defaultTracker
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("todays-max-risk", action: "tap", label: "open-precautions", value: nil).build())
+
             var svc = segue.destinationViewController as PrecautionsController
             if let text = self.todaysMaxRisk.titleLabel?.text {
                 switch text {
@@ -575,14 +607,13 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         }
         
         if (segue.identifier == "moreInfoSegue") {
-            var svc = segue.destinationViewController as UINavigationController
-            
+            // Record GA event
+            var tracker = GAI.sharedInstance().defaultTracker
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("more-info", action: "tap", label: "open-info", value: nil).build())
+
             // Set tint color of the incoming more info navigation controller to match the app state
-            if (self.riskLevel == 0) {
-                svc.navigationBar.tintColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
-            } else {
-                svc.navigationBar.tintColor = self.view.backgroundColor
-            }
+            var svc = segue.destinationViewController as UINavigationController
+            svc.navigationBar.tintColor = self.riskLevel == 0 ? UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0) : self.view.backgroundColor
         }
     }
 }
