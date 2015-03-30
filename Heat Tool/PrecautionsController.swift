@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PrecautionsController: UIViewController {
+class PrecautionsController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     var localfilePath = NSURL()
@@ -25,12 +25,24 @@ class PrecautionsController: UIViewController {
         var path = NSBundle.mainBundle().bundlePath
         var baseUrl  = NSURL.fileURLWithPath("\(path)")
         
+        webView.delegate = self
         webView.loadHTMLString(contents, baseURL: baseUrl)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+        // If it's a web link
+        if request.URL.scheme == "http" {
+            UIApplication.sharedApplication().openURL(request.URL)
+            return false
+        }
+        
+        // If it's a local link
+        return true
     }
 
     /*

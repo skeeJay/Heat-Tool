@@ -158,7 +158,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         temperatures = []
         humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
-        //        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.347649&lon=-80.899375&FcstType=digitalDWML")))!
+//        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.902470&lon=-97.418151&FcstType=digitalDWML")))!
         parser.delegate = self
         parser.parse()
     }
@@ -325,7 +325,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
             let date = dateFormatter.dateFromString(maxTime)
             dateFormatter.dateFormat = "h:mm a"
-            self.todaysMaxTime.text = "At \(dateFormatter.stringFromDate(date!))"
+            self.todaysMaxTime.text = NSLocalizedString("At", comment: "At Title") + " \(dateFormatter.stringFromDate(date!))"
         }
         
         UIView.animateWithDuration(0.75, delay: 0.0, options: nil, animations: {
@@ -480,8 +480,8 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 tracker.send(GAIDictionaryBuilder.createEventWithCategory("location-field", action: "tap", label: "location-services-disabled-alert", value: nil).build())
                 
                 let alertController = UIAlertController(
-                    title: "Location Services Disabled",
-                    message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
+                    title: NSLocalizedString("Location Services Disabled", comment: "Location Services Title"),
+                    message: NSLocalizedString("To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.", comment: "Location Services Description"),
                     preferredStyle: .Alert)
                 
                 // Add a cancel option
@@ -565,6 +565,8 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        // Fill next view with appropriate precautions
         if (segue.identifier == "nowPrecautionsSegue") {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
@@ -581,10 +583,11 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             case 4:
                 svc.precautionLevel = "precautions_veryhigh"
             default:
-                svc.precautionLevel = "precautions_lower"
+                println("default")
             }
         }
         
+        // Fill next view with appropriate precautions
         if (segue.identifier == "todaysMaxPrecautionsSegue") {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
@@ -593,16 +596,16 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             var svc = segue.destinationViewController as PrecautionsController
             if let text = self.todaysMaxRisk.titleLabel?.text {
                 switch text {
-                case "Lower Risk\n(Use Caution)":
+                case NSLocalizedString("Lower Risk (Use Caution)", comment: "Low Risk Title"):
                     svc.precautionLevel = "precautions_lower"
-                case "Moderate Risk":
+                case NSLocalizedString("Moderate Risk", comment: "Moderate Risk Title"):
                     svc.precautionLevel = "precautions_moderate"
-                case "High\nRisk":
+                case NSLocalizedString("High Risk", comment: "High Risk Title"):
                     svc.precautionLevel = "precautions_high"
-                case "Very High To Extreme Risk":
+                case NSLocalizedString("Very High To Extreme Risk", comment: "Very High Risk Title"):
                     svc.precautionLevel = "precautions_veryhigh"
                 default:
-                    svc.precautionLevel = "precautions_lower"
+                    println("default")
                 }
             }
         }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WebViewController: UIViewController {
+class WebViewController: UIViewController, UIWebViewDelegate {
 
     @IBOutlet weak var webView: UIWebView!
     var localfilePath = NSURL()
@@ -17,23 +17,36 @@ class WebViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = infoContent
-
         // Do any additional setup after loading the view.
-        var localFilePath = NSBundle.mainBundle().pathForResource(infoContent
-            , ofType: "html")
+        
+        // Set navigation bar title
+        self.title = NSLocalizedString(infoContent, comment: infoContent + " Title")
+        
+        var localFilePath = NSBundle.mainBundle().pathForResource(infoContent, ofType: "html")
         var contents = NSString(contentsOfFile: localFilePath!, encoding: NSUTF8StringEncoding, error: nil)
         
         // Set the base URL for the web view so we can access resources
         var path = NSBundle.mainBundle().bundlePath
         var baseUrl  = NSURL.fileURLWithPath("\(path)")
         
+        webView.delegate = self
         webView.loadHTMLString(contents, baseURL: baseUrl)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+        // If it's a web link
+        if request.URL.scheme == "http" {
+            UIApplication.sharedApplication().openURL(request.URL)
+            return false
+        }
+        
+        // If it's a local link
+        return true
     }
     
     /*

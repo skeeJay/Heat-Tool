@@ -10,11 +10,7 @@ import UIKit
 
 class MoreInfoController: UITableViewController {
     
-    let moreInfoItems = [NSLocalizedString("Signs and Symptoms", comment: "Signs and Symptoms Title"),
-        NSLocalizedString("First Aid", comment: "First Aid"),
-        NSLocalizedString("More Detail", comment: "More Detail Title"),
-        NSLocalizedString("Contact OSHA", comment: "Contact OSHA Title"),
-        NSLocalizedString("About This App", comment: "About This App Title")];
+    let moreInfoItems = ["Signs and Symptoms","First Aid","More Details","Contact OSHA","About This App"];
     let moreInfoImages = ["moreinfo_signs","moreinfo_firstAid","moreinfo_more","moreinfo_contact","moreinfo_about"];
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -25,7 +21,7 @@ class MoreInfoController: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as UITableViewCell
         
-        cell.textLabel!.text = moreInfoItems[indexPath.row]
+        cell.textLabel!.text = NSLocalizedString(moreInfoItems[indexPath.row], comment: moreInfoItems[indexPath.row] + " Title")
         
         var imageName = UIImage(named: moreInfoImages[indexPath.row])
         cell.imageView!.layer.masksToBounds = true
