@@ -10,7 +10,11 @@ import UIKit
 
 class MoreInfoController: UITableViewController {
     
-    let moreInfoItems = ["Signs and Symptoms","First Aid","More Detail","Contact OSHA","About This App"];
+    let moreInfoItems = [NSLocalizedString("Signs and Symptoms", comment: "Signs and Symptoms Title"),
+        NSLocalizedString("First Aid", comment: "First Aid"),
+        NSLocalizedString("More Detail", comment: "More Detail Title"),
+        NSLocalizedString("Contact OSHA", comment: "Contact OSHA Title"),
+        NSLocalizedString("About This App", comment: "About This App Title")];
     let moreInfoImages = ["moreinfo_signs","moreinfo_firstAid","moreinfo_more","moreinfo_contact","moreinfo_about"];
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

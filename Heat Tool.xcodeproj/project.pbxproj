@@ -36,6 +36,7 @@
 		835E84F31AAF635600D9C71D /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 835E84F21AAF635600D9C71D /* libz.dylib */; };
 		8386109E1A93E37D000A1904 /* PrecautionsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8386109D1A93E37D000A1904 /* PrecautionsController.swift */; };
 		838610A51A941350000A1904 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 831D9A951A8EB30800B4EB56 /* CoreLocation.framework */; };
+		839D98A61AC8D178007751EF /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 839D98A81AC8D178007751EF /* Localizable.strings */; };
 		83AFB0711AB9BED7002116FA /* humidity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFB06F1AB9BED7002116FA /* humidity@2x.png */; };
 		83AFB0721AB9BED7002116FA /* temperature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83AFB0701AB9BED7002116FA /* temperature@2x.png */; };
 		83B573211A730CD10041A64E /* sTlUYgPo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 83B573201A730CD10041A64E /* sTlUYgPo@2x.png */; };
@@ -95,7 +96,6 @@
 		834990021A9904FE00669A1A /* img7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img7.png; sourceTree = "<group>"; };
 		834990031A9904FE00669A1A /* img8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img8.png; sourceTree = "<group>"; };
 		834990041A9904FE00669A1A /* img9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img9.png; sourceTree = "<group>"; };
-		835882A61AA37CE9005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
 		835882A81AA37CF7005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/About This App.html"; sourceTree = "<group>"; };
 		835882AE1AA37DFA005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/About This App.html"; sourceTree = "<group>"; };
 		835882B31AA380AF005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Contact OSHA.html"; sourceTree = "<group>"; };
@@ -117,21 +117,24 @@
 		835E84F71AAF64FD00D9C71D /* Heat Tool-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Heat Tool-Bridging-Header.h"; sourceTree = "<group>"; };
 		8386109D1A93E37D000A1904 /* PrecautionsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrecautionsController.swift; sourceTree = "<group>"; };
 		838610A31A9411B0000A1904 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		83AFB06F1AB9BED7002116FA /* humidity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "humidity@2x.png"; sourceTree = "<group>"; };
-		83AFB0701AB9BED7002116FA /* temperature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "temperature@2x.png"; sourceTree = "<group>"; };
-		83B573201A730CD10041A64E /* sTlUYgPo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sTlUYgPo@2x.png"; sourceTree = "<group>"; };
+		839D98A31AC8D05B007751EF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Main.strings; sourceTree = "<group>"; };
+		839D98A71AC8D178007751EF /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		839D98A91AC8D17A007751EF /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
+		83AFB06F1AB9BED7002116FA /* humidity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "humidity@2x.png"; path = "../../humidity@2x.png"; sourceTree = "<group>"; };
+		83AFB0701AB9BED7002116FA /* temperature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "temperature@2x.png"; path = "../../temperature@2x.png"; sourceTree = "<group>"; };
+		83B573201A730CD10041A64E /* sTlUYgPo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "sTlUYgPo@2x.png"; path = "../../sTlUYgPo@2x.png"; sourceTree = "<group>"; };
 		83D7467D1AAE744F006C5865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/First Aid.html"; sourceTree = "<group>"; };
 		83D7467F1AAE7451006C5865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/First Aid.html"; sourceTree = "<group>"; };
 		83D746811AAE749D006C5865 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Signs and Symptoms.html"; sourceTree = "<group>"; };
 		83D746831AAE74A0006C5865 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/Signs and Symptoms.html"; sourceTree = "<group>"; };
-		83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_about@2x.png"; sourceTree = "<group>"; };
-		83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_contact@2x.png"; sourceTree = "<group>"; };
-		83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_firstAid@2x.png"; sourceTree = "<group>"; };
-		83E111351A72FFA6007DE234 /* moreinfo_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_more@2x.png"; sourceTree = "<group>"; };
-		83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "moreinfo_signs@2x.png"; sourceTree = "<group>"; };
-		83E9C2AE1A95024800BE4019 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron@2x.png"; sourceTree = "<group>"; };
-		83E9C2B11A952BFB00BE4019 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "location@2x.png"; sourceTree = "<group>"; };
-		83F96FBF1A9CDDF000C7812C /* geo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "geo@2x.png"; sourceTree = "<group>"; };
+		83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moreinfo_about@2x.png"; path = "../../moreinfo_about@2x.png"; sourceTree = "<group>"; };
+		83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moreinfo_contact@2x.png"; path = "../../moreinfo_contact@2x.png"; sourceTree = "<group>"; };
+		83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moreinfo_firstAid@2x.png"; path = "../../moreinfo_firstAid@2x.png"; sourceTree = "<group>"; };
+		83E111351A72FFA6007DE234 /* moreinfo_more@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moreinfo_more@2x.png"; path = "../../moreinfo_more@2x.png"; sourceTree = "<group>"; };
+		83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "moreinfo_signs@2x.png"; path = "../../moreinfo_signs@2x.png"; sourceTree = "<group>"; };
+		83E9C2AE1A95024800BE4019 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "chevron@2x.png"; path = "../../chevron@2x.png"; sourceTree = "<group>"; };
+		83E9C2B11A952BFB00BE4019 /* location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "location@2x.png"; path = "../../location@2x.png"; sourceTree = "<group>"; };
+		83F96FBF1A9CDDF000C7812C /* geo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "geo@2x.png"; path = "../../geo@2x.png"; sourceTree = "<group>"; };
 		83FDDFD41A66C9470018A068 /* Heat Tool.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Heat Tool.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FDDFD81A66C9470018A068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83FDDFD91A66C9470018A068 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -142,7 +145,7 @@
 		83FDDFE91A66C9470018A068 /* Heat ToolTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Heat ToolTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		83FDDFEE1A66C9470018A068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		83FDDFEF1A66C9470018A068 /* Heat_ToolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Heat_ToolTests.swift; sourceTree = "<group>"; };
-		83FDDFF91A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "US-OSHA-Logo.svg@2x.png"; sourceTree = "<group>"; };
+		83FDDFF91A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "US-OSHA-Logo.svg@2x.png"; path = "../../US-OSHA-Logo.svg@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +201,18 @@
 				834990021A9904FE00669A1A /* img7.png */,
 				834990031A9904FE00669A1A /* img8.png */,
 				834990041A9904FE00669A1A /* img9.png */,
+				83F96FBF1A9CDDF000C7812C /* geo@2x.png */,
+				83AFB06F1AB9BED7002116FA /* humidity@2x.png */,
+				83AFB0701AB9BED7002116FA /* temperature@2x.png */,
+				83E9C2AE1A95024800BE4019 /* chevron@2x.png */,
+				83E9C2B11A952BFB00BE4019 /* location@2x.png */,
+				83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */,
+				83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */,
+				83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */,
+				83E111351A72FFA6007DE234 /* moreinfo_more@2x.png */,
+				83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */,
+				83B573201A730CD10041A64E /* sTlUYgPo@2x.png */,
+				83FDDFF91A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png */,
 			);
 			name = Images;
 			path = heatappweb_en/images;
@@ -285,19 +300,8 @@
 				83E32F811AAE7A6700082646 /* Precautions */,
 				83E32F801AAE7A5800082646 /* Webviews */,
 				83498FF61A9904FE00669A1A /* Images */,
-				83F96FBF1A9CDDF000C7812C /* geo@2x.png */,
-				83AFB06F1AB9BED7002116FA /* humidity@2x.png */,
-				83AFB0701AB9BED7002116FA /* temperature@2x.png */,
-				83E9C2AE1A95024800BE4019 /* chevron@2x.png */,
-				83E9C2B11A952BFB00BE4019 /* location@2x.png */,
-				83E1112F1A72FFA6007DE234 /* moreinfo_about@2x.png */,
-				83E111311A72FFA6007DE234 /* moreinfo_contact@2x.png */,
-				83E111331A72FFA6007DE234 /* moreinfo_firstAid@2x.png */,
-				83E111351A72FFA6007DE234 /* moreinfo_more@2x.png */,
-				83E111371A72FFA6007DE234 /* moreinfo_signs@2x.png */,
-				83B573201A730CD10041A64E /* sTlUYgPo@2x.png */,
-				83FDDFF91A66D11C0018A068 /* US-OSHA-Logo.svg@2x.png */,
 				83FDDFD81A66C9470018A068 /* Info.plist */,
+				839D98A81AC8D178007751EF /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -422,6 +426,7 @@
 				835882C51AA385AD005A3761 /* precautions_veryhigh.html in Resources */,
 				83FDDFE41A66C9470018A068 /* LaunchScreen.xib in Resources */,
 				83D746801AAE749D006C5865 /* Signs and Symptoms.html in Resources */,
+				839D98A61AC8D178007751EF /* Localizable.strings in Resources */,
 				83FDDFE11A66C9470018A068 /* Images.xcassets in Resources */,
 				834990371A9904FE00669A1A /* img3.png in Resources */,
 				835882B51AA381E8005A3761 /* More Detail.html in Resources */,
@@ -552,6 +557,15 @@
 			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
+		839D98A81AC8D178007751EF /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				839D98A71AC8D178007751EF /* Base */,
+				839D98A91AC8D17A007751EF /* es */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		83D7467E1AAE744F006C5865 /* First Aid.html */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -576,7 +590,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				83FDDFDE1A66C9470018A068 /* Base */,
-				835882A61AA37CE9005A3761 /* es */,
+				839D98A31AC8D05B007751EF /* es */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";

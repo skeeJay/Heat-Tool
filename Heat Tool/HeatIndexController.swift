@@ -14,7 +14,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     // Create globals for buttons and labels, so they can be updated with the risk state/background color
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var locationActivityIndicator: UIActivityIndicatorView!
-
+    
     @IBOutlet weak var temperatureTextField: UITextField!
     @IBOutlet weak var humidityTextField: UITextField!
     
@@ -151,14 +151,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
         locManager.stopUpdatingLocation()
         
-//        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
+        //        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
         
         // Request and parse NOAA API with current coordinates
         times = []
         temperatures = []
         humidities = []
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
-//        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.347649&lon=-80.899375&FcstType=digitalDWML")))!
+        //        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.347649&lon=-80.899375&FcstType=digitalDWML")))!
         parser.delegate = self
         parser.parse()
     }
@@ -225,7 +225,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Update today's max risk from fetched hourly values
             // Today's max should be calculated before overall risk level, so that app state styling from overall risk can take it into account
             self.updateTodaysMaxRiskLevel()
-
+            
             // Update main risk from text field values
             self.updateRiskLevel()
         }
@@ -276,7 +276,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             var newHumidityDouble = (humidities[index] as NSString).doubleValue
             var newHeatIndex = calculateHeatIndex(newTempDouble, humidity: newHumidityDouble)
             
-            println("Hour \(index): Time: \(newHour) Temp: \(temperatures[index]), Humidity: \(humidities[index])")
+//            println("Hour \(index): Time: \(newHour) Temp: \(temperatures[index]), Humidity: \(humidities[index])")
             
             if newTempDouble > 80.0 && newHeatIndex > maxHeatIndex {
                 maxIndex = index
@@ -284,23 +284,23 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 maxTime = newTime
             }
         }
-        println("Max \(maxIndex): Heat: \(maxHeatIndex)")
+//        println("Max \(maxIndex): Heat: \(maxHeatIndex)")
         
         // Risk won't be greater than minimal for the rest of the day
         if maxIndex == -1 {
-            self.todaysMaxRisk.setTitle("Minimal Risk\nFrom Heat", forState: .Normal)
+            self.todaysMaxRisk.setTitle(NSLocalizedString("Minimal Risk From Heat", comment: "Minimal Risk Title"), forState: .Normal)
             self.todaysMaxTime.text = ""
             // The risk now is the highest for the rest of the day
         } else if maxIndex == 0 {
             switch maxHeatIndex {
             case 0..<91:
-                self.todaysMaxRisk.setTitle("Lower Risk\n(Use Caution)", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Lower Risk (Use Caution)", comment: "Low Risk Title"), forState: .Normal)
             case 91..<104:
-                self.todaysMaxRisk.setTitle("Moderate Risk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Moderate Risk", comment: "Moderate Risk Title"), forState: .Normal)
             case 104..<116:
-                self.todaysMaxRisk.setTitle("High\nRisk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("High Risk", comment: "High Risk Title"), forState: .Normal)
             case 116..<1000:
-                self.todaysMaxRisk.setTitle("Very High To Extreme Risk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Very High To Extreme Risk", comment: "Very High Risk Title"), forState: .Normal)
             default:
                 println("default")
             }
@@ -310,13 +310,13 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         } else {
             switch maxHeatIndex {
             case 0..<91:
-                self.todaysMaxRisk.setTitle("Lower Risk\n(Use Caution)", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Lower Risk (Use Caution)", comment: "Low Risk Title"), forState: .Normal)
             case 91..<104:
-                self.todaysMaxRisk.setTitle("Moderate Risk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Moderate Risk", comment: "Moderate Risk Title"), forState: .Normal)
             case 104..<116:
-                self.todaysMaxRisk.setTitle("High\nRisk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("High Risk", comment: "High Risk Title"), forState: .Normal)
             case 116..<1000:
-                self.todaysMaxRisk.setTitle("Very High To Extreme Risk", forState: .Normal)
+                self.todaysMaxRisk.setTitle(NSLocalizedString("Very High To Extreme Risk", comment: "Very High Risk Title"), forState: .Normal)
             default:
                 println("default")
             }
@@ -332,7 +332,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.todaysMaxContainer.alpha = 1
             
             // Disable precautions button if minimal risk state
-            if (self.todaysMaxRisk.titleLabel?.text == "Minimal Risk\nFrom Heat") {
+            if (self.todaysMaxRisk.titleLabel?.text == NSLocalizedString("Minimal Risk From Heat", comment: "Minimal Risk Title")) {
                 self.todaysMaxRisk.enabled = false
             } else {
                 self.todaysMaxRisk.enabled = true
@@ -348,7 +348,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         var perceivedTemperature = calculateHeatIndex(tempInF, humidity: humidity)
         
         var riskTitleString = ""
-
+        
         var backgroundColor = UIColor()
         var buttonColor = UIColor()
         var labelColor = UIColor()
@@ -358,7 +358,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         switch Int(perceivedTemperature) {
         case -1000..<80:
             self.riskLevel = 0
-            riskTitleString = "Minimal Risk From Heat"
+            riskTitleString = NSLocalizedString("Minimal Risk From Heat", comment: "Minimal Risk Title")
             
             backgroundColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
             buttonColor = UIColor.blackColor()
@@ -366,7 +366,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             disabledColor = UIColor(red: 0.5, green: 0.5, blue: 0.5, alpha: 0.2)
         case 80..<91:
             self.riskLevel = 1
-            riskTitleString = "Lower Risk (Use Caution)"
+            riskTitleString = NSLocalizedString("Lower Risk (Use Caution)", comment: "Low Risk Title")
             
             backgroundColor = UIColor(red: 1.0, green: 0.9, blue: 0.0, alpha: 1.0)
             buttonColor = UIColor.blackColor()
@@ -374,7 +374,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             disabledColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 0.3)
         case 91..<104:
             self.riskLevel = 2
-            riskTitleString = "Moderate Risk"
+            riskTitleString = NSLocalizedString("Moderate Risk", comment: "Moderate Risk Title")
             
             backgroundColor = UIColor(red: 1.0, green: 0.675, blue: 0.0, alpha: 1.0)
             buttonColor = UIColor.blackColor()
@@ -382,15 +382,15 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             disabledColor = UIColor(red: 0.15, green: 0.15, blue: 0.15, alpha: 0.3)
         case 104..<116:
             self.riskLevel = 3
-            riskTitleString = "High\nRisk"
-
+            riskTitleString = NSLocalizedString("High Risk", comment: "High Risk Title")
+            
             backgroundColor = UIColor.orangeColor()
             buttonColor = UIColor.whiteColor()
             labelColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 0.6)
             disabledColor = UIColor(red: 0.95, green: 0.95, blue: 0.95, alpha: 0.4)
         case 116..<1000:
             self.riskLevel = 4
-            riskTitleString = "Very High To Extreme Risk"
+            riskTitleString = NSLocalizedString("Very High To Extreme Risk", comment: "Very High Risk Title")
             
             backgroundColor = UIColor.redColor()
             buttonColor = UIColor.whiteColor()
@@ -401,20 +401,41 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         }
         
         // Update the interface
+        // Set text
+        self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
+        if self.locationTextField.text == "" {
+            self.nowLabel.text = NSLocalizedString("Calculated", comment: "Calculated Title")
+            self.feelsLikeNow.text = NSLocalizedString("Feels Like", comment: "Feels Like Title") + " \(Int(perceivedTemperature))º F"
+        } else {
+            self.nowLabel.text = NSLocalizedString("Now", comment: "Now Title")
+            self.feelsLikeNow.text = NSLocalizedString("Feels Like", comment: "Feels Like Title") + " \(Int(perceivedTemperature))º F"
+        }
+        
+        // Disable current risk precautions button if minimal risk state
+        if (self.riskLevel == 0) {
+            self.riskButtonNow.enabled = false
+            self.riskButtonNow.setTitleColor(disabledColor, forState: .Normal)
+            self.riskButtonNow.imageView?.alpha = 0
+        } else {
+            self.riskButtonNow.enabled = true
+            self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
+            self.riskButtonNow.imageView?.alpha = 1
+        }
+        
+        // Disable max risk precautions button if minimal risk state
+        if self.todaysMaxRisk.enabled == false {
+            self.todaysMaxRisk.setTitleColor(disabledColor, forState: .Normal)
+            self.todaysMaxRisk.imageView?.alpha = 0
+        } else {
+            self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
+            self.todaysMaxRisk.imageView?.alpha = 1
+        }
+        
+        // Hide "feels like" text if we're below the heat index threshold
+        self.feelsLikeNow.alpha = self.riskLevel == 0 ? 0 : 1
+        
+        // Animate certain interface updates
         UIView.animateWithDuration(0.75, delay: 0.0, options: nil, animations: {
-            
-            // Set text
-            self.riskButtonNow.setTitle(riskTitleString, forState: .Normal)
-            if self.locationTextField.text == "" {
-                self.nowLabel.text = "Calculated"
-                self.feelsLikeNow.text = "Would Feel Like \(Int(perceivedTemperature))º F"
-            } else {
-                self.nowLabel.text = "Now"
-                self.feelsLikeNow.text = "Feels Like \(Int(perceivedTemperature))º F"
-            }
-            
-            // Hide "feels like" text if we're below the heat index threshold
-            self.feelsLikeNow.alpha = self.riskLevel == 0 ? 0 : 1
             
             // Change background colors
             self.view.backgroundColor = backgroundColor
@@ -437,26 +458,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.temperatureTextField.textColor = buttonColor
             self.humidityTextField.textColor = buttonColor
             
-            // Disable current risk precautions button if minimal risk state
-            if (self.riskLevel == 0) {
-                self.riskButtonNow.enabled = false
-                self.riskButtonNow.setTitleColor(disabledColor, forState: .Normal)
-                self.riskButtonNow.imageView?.alpha = 0
-            } else {
-                self.riskButtonNow.enabled = true
-                self.riskButtonNow.setTitleColor(buttonColor, forState: .Normal)
-                self.riskButtonNow.imageView?.alpha = 1
-            }
-            
-            // Disable max risk precautions button if minimal risk state
-            if self.todaysMaxRisk.enabled == false {
-                self.todaysMaxRisk.setTitleColor(disabledColor, forState: .Normal)
-                self.todaysMaxRisk.imageView?.alpha = 0
-            } else {
-                self.todaysMaxRisk.setTitleColor(buttonColor, forState: .Normal)
-                self.todaysMaxRisk.imageView?.alpha = 1
-            }
-            
             }, completion: nil)
     }
     
@@ -472,12 +473,12 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 // Get current conditions
                 self.locationActivityIndicator.startAnimating()
                 self.locManager.startUpdatingLocation()
-            // If location settings don't allow, display an alert
+                // If location settings don't allow, display an alert
             } else {
                 // Record GA event
                 var tracker = GAI.sharedInstance().defaultTracker
                 tracker.send(GAIDictionaryBuilder.createEventWithCategory("location-field", action: "tap", label: "location-services-disabled-alert", value: nil).build())
-
+                
                 let alertController = UIAlertController(
                     title: "Location Services Disabled",
                     message: "To get your local conditions, visit settings to allow the OSHA Heat Safety Tool to use your location when the app is in use.",
@@ -491,7 +492,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                     if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                         UIApplication.sharedApplication().openURL(url)
                     }
-                })
+                    })
                 
                 // Present the alert
                 self.presentViewController(alertController, animated: true, completion: nil)
@@ -499,7 +500,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Do not allow the text field to be editable
             return false
-        // For all other text fields, allow editing to begin
+            // For all other text fields, allow editing to begin
         } else {
             return true
         }
@@ -510,7 +511,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Record GA event
         var tracker = GAI.sharedInstance().defaultTracker
         tracker.send(GAIDictionaryBuilder.createEventWithCategory("keyboard", action: "set", label: "calculate-entered-conditions", value: nil).build())
-
+        
         self.temperatureTextField.endEditing(true)
         self.humidityTextField.endEditing(true)
         
@@ -547,7 +548,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Record GA event
         var tracker = GAI.sharedInstance().defaultTracker
         tracker.send(GAIDictionaryBuilder.createEventWithCategory("osha-logo", action: "tap", label: "open-osha-website", value: nil).build())
-
+        
         // Open website
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.osha.gov")!)
     }
@@ -568,7 +569,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("now-risk", action: "tap", label: "open-precautions", value: nil).build())
-
+            
             var svc = segue.destinationViewController as PrecautionsController
             switch riskLevel {
             case 1:
@@ -588,7 +589,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("todays-max-risk", action: "tap", label: "open-precautions", value: nil).build())
-
+            
             var svc = segue.destinationViewController as PrecautionsController
             if let text = self.todaysMaxRisk.titleLabel?.text {
                 switch text {
@@ -610,11 +611,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("more-info", action: "tap", label: "open-info", value: nil).build())
-
+            
             // Set tint color of the incoming more info navigation controller to match the app state
             var svc = segue.destinationViewController as UINavigationController
             svc.navigationBar.tintColor = self.riskLevel == 0 ? UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0) : self.view.backgroundColor
         }
     }
 }
-

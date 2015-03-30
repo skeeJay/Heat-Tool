@@ -1,30 +1,30 @@
 
-/* Class = "IBUIButton"; normalTitle = "--, --"; ObjectID = "0do-1N-Sfn"; */
-"0do-1N-Sfn.normalTitle" = "--, --";
+/* Class = "UITextField"; placeholder = "Manual Data"; ObjectID = "3MA-b7-shL"; */
+"3MA-b7-shL.placeholder" = "Datos de Manual";
 
-/* Class = "IBUIButton"; normalTitle = "--"; ObjectID = "4wG-r6-Yyj"; */
+/* Class = "UIButton"; normalTitle = "--"; ObjectID = "4wG-r6-Yyj"; */
 "4wG-r6-Yyj.normalTitle" = "--";
 
-/* Class = "IBUILabel"; text = "Around 3:00 PM"; ObjectID = "6va-OD-rCb"; */
-"6va-OD-rCb.text" = "Around 3:00 PM";
+/* Class = "UILabel"; text = "Around -:-- --"; ObjectID = "6va-OD-rCb"; */
+"6va-OD-rCb.text" = "A las -:-- --";
 
-/* Class = "IBUINavigationItem"; title = "Precautions"; ObjectID = "BU0-3k-GCJ"; */
+/* Class = "UINavigationItem"; title = "Precautions"; ObjectID = "BU0-3k-GCJ"; */
 "BU0-3k-GCJ.title" = "Precauciones";
 
-/* Class = "IBUINavigationItem"; title = "More Info"; ObjectID = "O71-Wf-rlr"; */
+/* Class = "UINavigationItem"; title = "More Info"; ObjectID = "O71-Wf-rlr"; */
 "O71-Wf-rlr.title" = "Más Info";
 
-/* Class = "IBUILabel"; text = "Now"; ObjectID = "Wan-YT-Oua"; */
-"Wan-YT-Oua.text" = "Now";
+/* Class = "UILabel"; text = "Now"; ObjectID = "Wan-YT-Oua"; */
+"Wan-YT-Oua.text" = "Actual";
 
-/* Class = "IBUILabel"; text = "Feels Like --º F"; ObjectID = "YbO-MY-bxl"; */
-"YbO-MY-bxl.text" = "Feels Like --º F";
+/* Class = "UILabel"; text = "Feels Like --º F"; ObjectID = "YbO-MY-bxl"; */
+"YbO-MY-bxl.text" = "Sensación Térmica --º F";
 
-/* Class = "IBUINavigationItem"; title = "Heat Index"; ObjectID = "l2i-F2-GRk"; */
+/* Class = "UIButton"; normalTitle = "--"; ObjectID = "ZvQ-km-hdk"; */
+"ZvQ-km-hdk.normalTitle" = "--";
+
+/* Class = "UINavigationItem"; title = "Heat Index"; ObjectID = "l2i-F2-GRk"; */
 "l2i-F2-GRk.title" = "Índice de Calor";
 
-/* Class = "IBUILabel"; text = "Very High To Extreme Risk"; ObjectID = "s5z-8M-8JI"; */
-"s5z-8M-8JI.text" = "Very High To Extreme Risk";
-
-/* Class = "IBUILabel"; text = "Today’s Max"; ObjectID = "wpU-lh-aUv"; */
-"wpU-lh-aUv.text" = "Today’s Max";
+/* Class = "UILabel"; text = "Today’s Max"; ObjectID = "wpU-lh-aUv"; */
+"wpU-lh-aUv.text" = "Temp Máxima";
