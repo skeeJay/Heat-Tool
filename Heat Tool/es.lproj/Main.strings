@@ -15,7 +15,7 @@
 "O71-Wf-rlr.title" = "Más Info";
 
 /* Class = "UILabel"; text = "Now"; ObjectID = "Wan-YT-Oua"; */
-"Wan-YT-Oua.text" = "Actual";
+"Wan-YT-Oua.text" = "Ahora";
 
 /* Class = "UILabel"; text = "Feels Like --º F"; ObjectID = "YbO-MY-bxl"; */
 "YbO-MY-bxl.text" = "Sensación Térmica --º F";
@@ -27,4 +27,4 @@
 "l2i-F2-GRk.title" = "Índice de Calor";
 
 /* Class = "UILabel"; text = "Today’s Max"; ObjectID = "wpU-lh-aUv"; */
-"wpU-lh-aUv.text" = "Temp Máxima";
+"wpU-lh-aUv.text" = "Máxima de Hoy";
