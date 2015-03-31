@@ -25,7 +25,7 @@
 		8349903D1A9904FE00669A1A /* img9.png in Resources */ = {isa = PBXBuildFile; fileRef = 834990041A9904FE00669A1A /* img9.png */; };
 		835882A71AA37CF7005A3761 /* About This App.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882A91AA37CF7005A3761 /* About This App.html */; };
 		835882B01AA380AC005A3761 /* Contact OSHA.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B21AA380AC005A3761 /* Contact OSHA.html */; };
-		835882B51AA381E8005A3761 /* More Detail.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B71AA381E8005A3761 /* More Detail.html */; };
+		835882B51AA381E8005A3761 /* More Details.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882B71AA381E8005A3761 /* More Details.html */; };
 		835882B91AA383AF005A3761 /* precautions_lower.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882BB1AA383AF005A3761 /* precautions_lower.html */; };
 		835882BD1AA384BE005A3761 /* precautions_moderate.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882BF1AA384BE005A3761 /* precautions_moderate.html */; };
 		835882C11AA38535005A3761 /* precautions_high.html in Resources */ = {isa = PBXBuildFile; fileRef = 835882C31AA38535005A3761 /* precautions_high.html */; };
@@ -100,8 +100,8 @@
 		835882AE1AA37DFA005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/About This App.html"; sourceTree = "<group>"; };
 		835882B31AA380AF005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/Contact OSHA.html"; sourceTree = "<group>"; };
 		835882B41AA380D4005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/Contact OSHA.html"; sourceTree = "<group>"; };
-		835882B61AA381E8005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/More Detail.html"; sourceTree = "<group>"; };
-		835882B81AA381ED005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/More Detail.html"; sourceTree = "<group>"; };
+		835882B61AA381E8005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = "Base.lproj/More Details.html"; sourceTree = "<group>"; };
+		835882B81AA381ED005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = "es.lproj/More Details.html"; sourceTree = "<group>"; };
 		835882BA1AA383AF005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_lower.html; sourceTree = "<group>"; };
 		835882BC1AA383B2005A3761 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = es; path = es.lproj/precautions_lower.html; sourceTree = "<group>"; };
 		835882BE1AA384BE005A3761 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = Base.lproj/precautions_moderate.html; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 				835882A91AA37CF7005A3761 /* About This App.html */,
 				835882B21AA380AC005A3761 /* Contact OSHA.html */,
 				83D7467E1AAE744F006C5865 /* First Aid.html */,
-				835882B71AA381E8005A3761 /* More Detail.html */,
+				835882B71AA381E8005A3761 /* More Details.html */,
 				83D746821AAE749D006C5865 /* Signs and Symptoms.html */,
 			);
 			name = Webviews;
@@ -429,7 +429,7 @@
 				839D98A61AC8D178007751EF /* Localizable.strings in Resources */,
 				83FDDFE11A66C9470018A068 /* Images.xcassets in Resources */,
 				834990371A9904FE00669A1A /* img3.png in Resources */,
-				835882B51AA381E8005A3761 /* More Detail.html in Resources */,
+				835882B51AA381E8005A3761 /* More Details.html in Resources */,
 				8349903A1A9904FE00669A1A /* img6.png in Resources */,
 				835882C11AA38535005A3761 /* precautions_high.html in Resources */,
 				834990361A9904FE00669A1A /* img2.png in Resources */,
@@ -507,13 +507,13 @@
 			path = heatappweb_en;
 			sourceTree = "<group>";
 		};
-		835882B71AA381E8005A3761 /* More Detail.html */ = {
+		835882B71AA381E8005A3761 /* More Details.html */ = {
 			isa = PBXVariantGroup;
 			children = (
 				835882B61AA381E8005A3761 /* Base */,
 				835882B81AA381ED005A3761 /* es */,
 			);
-			name = "More Detail.html";
+			name = "More Details.html";
 			path = heatappweb_en;
 			sourceTree = "<group>";
 		};

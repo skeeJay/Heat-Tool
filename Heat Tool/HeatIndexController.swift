@@ -134,7 +134,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         locManager.requestWhenInUseAuthorization();
     }
     
-    // Update state with the user's location on load
+    // Update state with the user's location when didChangeAuthorizationStatus fires on load
     func locationManager(manager: CLLocationManager!,didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == CLAuthorizationStatus.AuthorizedWhenInUse {
             // Record GA event
@@ -149,16 +149,20 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     
     // When the user's location is available
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!){
+        // We don't need it to keep updating, so stop the manager
         locManager.stopUpdatingLocation()
-        
-        //        println("http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")
         
         // Request and parse NOAA API with current coordinates
         times = []
         temperatures = []
         humidities = []
+        
+        // Use current coordinates to input and parse the NOAA API
         parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=\(locations[locations.count-1].coordinate.latitude)&lon=\(locations[locations.count-1].coordinate.longitude)&FcstType=digitalDWML")))!
+        
+        // South Texas, for some nice testing
 //        parser = NSXMLParser(contentsOfURL: (NSURL(string: "http://forecast.weather.gov/MapClick.php?lat=25.902470&lon=-97.418151&FcstType=digitalDWML")))!
+        
         parser.delegate = self
         parser.parse()
     }
@@ -169,7 +173,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         buffer = NSMutableString.alloc()
         buffer = ""
         
-        if (attributeDict["type"] != nil) {
+        if attributeDict["type"] != nil {
             if attributeDict["type"] as NSString == "hourly" {
                 inHourlyTemp = true
             }
@@ -223,7 +227,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.locationActivityIndicator.stopAnimating()
             
             // Update today's max risk from fetched hourly values
-            // Today's max should be calculated before overall risk level, so that app state styling from overall risk can take it into account
+            // N.B. Today's max should be calculated before overall risk level, so that app state styling controlled by overall risk can take it into account
             self.updateTodaysMaxRiskLevel()
             
             // Update main risk from text field values
@@ -234,7 +238,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
     // A function to calculate the heat index from a temperature/humidity combination
     func calculateHeatIndex(tempInF: Double, humidity: Double) -> Double {
         // Heat index calculation applies only to temps >= 80°
-        if (tempInF < 80.0) {
+        if tempInF < 80.0 {
             return tempInF
         } else {
             var calculatedHeatIndexF = 0.0
@@ -259,39 +263,53 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         var maxIndex = -1
         var maxTime:String = ""
         var maxHeatIndex = -1000.0
+        
+        // For the next 24 hours, stopping at midnight
         for index in 0...23 {
+            // Get a date object for this hour's time
             var newTime = (times[index] as NSString).stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
             
+            // Get a clean 12-hour readout of this hour's time
             let newDateFormatter = NSDateFormatter()
             newDateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
             let newDate = newDateFormatter.dateFromString(newTime)
             newDateFormatter.dateFormat = "h:mm a"
             var newHour = newDateFormatter.stringFromDate(newDate!)
             
+            // Stop the loop when we hit midnight
             if newHour == "12:00 AM" {
                 break
             }
             
+            // Calculate the heat index for this hour
             var newTempDouble = (temperatures[index] as NSString).doubleValue
             var newHumidityDouble = (humidities[index] as NSString).doubleValue
             var newHeatIndex = calculateHeatIndex(newTempDouble, humidity: newHumidityDouble)
             
+            // Print out this hour's data
 //            println("Hour \(index): Time: \(newHour) Temp: \(temperatures[index]), Humidity: \(humidities[index])")
             
+            // If the heat index exists and is higher than previous ones, mark it as the new high
             if newTempDouble > 80.0 && newHeatIndex > maxHeatIndex {
                 maxIndex = index
                 maxHeatIndex = newHeatIndex
                 maxTime = newTime
             }
         }
+        
+        // Print out the final max hour
 //        println("Max \(maxIndex): Heat: \(maxHeatIndex)")
         
-        // Risk won't be greater than minimal for the rest of the day
+        // If risk won't be greater than minimal for the rest of the day
         if maxIndex == -1 {
+            // Set the title on the button
             self.todaysMaxRisk.setTitle(NSLocalizedString("Minimal Risk From Heat", comment: "Minimal Risk Title"), forState: .Normal)
+            
+            // Blank out when the max is occurring because it doesn't apply
             self.todaysMaxTime.text = ""
-            // The risk now is the highest for the rest of the day
+        // If the risk now is the highest for the rest of the day
         } else if maxIndex == 0 {
+            // Set the title on the button
             switch maxHeatIndex {
             case 0..<91:
                 self.todaysMaxRisk.setTitle(NSLocalizedString("Lower Risk (Use Caution)", comment: "Low Risk Title"), forState: .Normal)
@@ -305,8 +323,9 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 println("default")
             }
             
-            self.todaysMaxTime.text = "Now"
-            // There's a higher risk coming
+            // Indicate that the max is occurring now
+            self.todaysMaxTime.text = NSLocalizedString("Now", comment: "Now Title")
+        // If there's a higher risk coming
         } else {
             switch maxHeatIndex {
             case 0..<91:
@@ -321,6 +340,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                 println("default")
             }
             
+            // Indicate the hour at which the max will occur
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZ"
             let date = dateFormatter.dateFromString(maxTime)
@@ -328,7 +348,9 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             self.todaysMaxTime.text = NSLocalizedString("At", comment: "At Title") + " \(dateFormatter.stringFromDate(date!))"
         }
         
+        // Update the interface
         UIView.animateWithDuration(0.75, delay: 0.0, options: nil, animations: {
+            // Make sure today's max container is visible
             self.todaysMaxContainer.alpha = 1
             
             // Disable precautions button if minimal risk state
@@ -538,11 +560,6 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             }, completion: nil)
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     // Tapping OSHA logo opens the OSHA website in Safari
     @IBAction func openOSHAWebsite(sender: AnyObject) {
         // Record GA event
@@ -553,6 +570,7 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         UIApplication.sharedApplication().openURL(NSURL(string: "https://www.osha.gov")!)
     }
     
+    // Tapping DOL logo opens the DOL website in Safari
     @IBAction func openDOLWebsite(sender: AnyObject) {
         // Record GA event
         var tracker = GAI.sharedInstance().defaultTracker
@@ -567,13 +585,14 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         // Pass the selected object to the new view controller.
         
         // Fill next view with appropriate precautions
-        if (segue.identifier == "nowPrecautionsSegue") {
+        if segue.identifier == "nowPrecautionsSegue" {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("now-risk", action: "tap", label: "open-precautions", value: nil).build())
             
+            // Set variable in the destination controller
             var svc = segue.destinationViewController as PrecautionsController
-            switch riskLevel {
+            switch self.riskLevel {
             case 1:
                 svc.precautionLevel = "precautions_lower"
             case 2:
@@ -588,11 +607,12 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         }
         
         // Fill next view with appropriate precautions
-        if (segue.identifier == "todaysMaxPrecautionsSegue") {
+        if segue.identifier == "todaysMaxPrecautionsSegue" {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("todays-max-risk", action: "tap", label: "open-precautions", value: nil).build())
             
+            // Set variable in the destination controller
             var svc = segue.destinationViewController as PrecautionsController
             if let text = self.todaysMaxRisk.titleLabel?.text {
                 switch text {
@@ -610,7 +630,8 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             }
         }
         
-        if (segue.identifier == "moreInfoSegue") {
+        // Set tint color of the incoming more info navigation controller to match the app state
+        if segue.identifier == "moreInfoSegue" {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
             tracker.send(GAIDictionaryBuilder.createEventWithCategory("more-info", action: "tap", label: "open-info", value: nil).build())
@@ -619,5 +640,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             var svc = segue.destinationViewController as UINavigationController
             svc.navigationBar.tintColor = self.riskLevel == 0 ? UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0) : self.view.backgroundColor
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 }
