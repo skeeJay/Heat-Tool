@@ -507,10 +507,10 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
                     preferredStyle: .Alert)
                 
                 // Add a cancel option
-                alertController.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("Cancel", comment: "Cancel Title"), style: .Cancel, handler: nil))
                 
                 // Add an option to go to settings
-                alertController.addAction(UIAlertAction(title: "Settings", style: .Default) { (action) in
+                alertController.addAction(UIAlertAction(title: NSLocalizedString("Settings", comment: "Settings Title"), style: .Default) { (action) in
                     if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
                         UIApplication.sharedApplication().openURL(url)
                     }
