@@ -63,8 +63,12 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
         self.navigationController?.navigationBar.barTintColor = UIColor(red: 0.94, green: 0.94, blue: 0.94, alpha: 1.0)
         
         // Give rounded corners to custom text fields
-        temperatureTextField.layer.cornerRadius = 6.0;
-        humidityTextField.layer.cornerRadius = 6.0;
+        temperatureTextField.layer.cornerRadius = 6.0
+        humidityTextField.layer.cornerRadius = 6.0
+        temperatureTextField.layer.borderColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5).CGColor
+        humidityTextField.layer.borderColor = UIColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.5).CGColor
+        temperatureTextField.layer.borderWidth = 0.5
+        humidityTextField.layer.borderWidth = 0.5
         
         // Add icons to left inset of text fields
         locationTextField.leftViewMode = UITextFieldViewMode.Always
