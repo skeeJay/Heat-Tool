@@ -638,7 +638,17 @@ class HeatIndexController: GAITrackedViewController, CLLocationManagerDelegate, 
             
             // Set tint color of the incoming more info navigation controller to match the app state
             var svc = segue.destinationViewController as UINavigationController
-            svc.navigationBar.tintColor = self.riskLevel == 0 ? UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0) : self.view.backgroundColor
+            switch self.riskLevel {
+            // Deeper gray for minimal state
+            case 0:
+                svc.navigationBar.tintColor = UIColor(red: 0.6, green: 0.6, blue: 0.6, alpha: 1.0)
+            // Deeper yellow for low risk state
+            case 1:
+                svc.navigationBar.tintColor = UIColor(red: 1.0, green: 0.775, blue: 0.0, alpha: 1.0)
+            // Use background color for all other states
+            default:
+                svc.navigationBar.tintColor = self.view.backgroundColor
+            }
         }
     }
     
