@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Init Google Analytics
         GAI.sharedInstance().trackUncaughtExceptions = true
         GAI.sharedInstance().dispatchInterval = 20
-//        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
+        GAI.sharedInstance().logger.logLevel = GAILogLevel.Verbose
         GAI.sharedInstance().trackerWithTrackingId("UA-61504244-1").set(kGAIAnonymizeIp, value: "1")
 
         return true
@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if myHeatIndexController?.locationTextField.text != "" && CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse {
             // Record GA event
             var tracker = GAI.sharedInstance().defaultTracker
-            tracker.send(GAIDictionaryBuilder.createEventWithCategory("app", action: "bring-app-to-foreground", label: "get-current-conditions", value: nil).build())
+            tracker.send(GAIDictionaryBuilder.createEventWithCategory("app", action: "bring-app-to-foreground", label: "get-current-conditions", value: nil).build() as [NSObject : AnyObject])
             
             // Get the latest data
             myHeatIndexController?.locationActivityIndicator.startAnimating()

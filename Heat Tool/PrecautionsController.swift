@@ -26,7 +26,7 @@ class PrecautionsController: UIViewController, UIWebViewDelegate {
         var baseUrl  = NSURL.fileURLWithPath("\(path)")
         
         webView.delegate = self
-        webView.loadHTMLString(contents, baseURL: baseUrl)
+        webView.loadHTMLString(contents as! String, baseURL: baseUrl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,10 +34,10 @@ class PrecautionsController: UIViewController, UIWebViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func webView(webView: UIWebView!, shouldStartLoadWithRequest request: NSURLRequest!, navigationType: UIWebViewNavigationType) -> Bool {
+    func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         // If it's a web link
-        if request.URL.scheme == "http" {
-            UIApplication.sharedApplication().openURL(request.URL)
+        if request.URL!.scheme == "http" {
+            UIApplication.sharedApplication().openURL(request.URL!)
             return false
         }
         

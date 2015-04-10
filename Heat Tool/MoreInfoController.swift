@@ -19,7 +19,7 @@ class MoreInfoController: UITableViewController {
     
     // Init each option in the table
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as UITableViewCell
+        var cell = tableView.dequeueReusableCellWithIdentifier("infoCell") as! UITableViewCell
         
         cell.textLabel!.text = NSLocalizedString(moreInfoItems[indexPath.row], comment: moreInfoItems[indexPath.row] + " Title")
         
@@ -40,7 +40,7 @@ class MoreInfoController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "webViewSegue" {
             if let indexPath = tableView.indexPathForSelectedRow() {
-                let destinationViewController = segue.destinationViewController as WebViewController
+                let destinationViewController = segue.destinationViewController as! WebViewController
                 destinationViewController.infoContent = moreInfoItems[indexPath.row]
             }
         }
